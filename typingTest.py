@@ -19,6 +19,8 @@ import numpy as np
 import operator
 import matplotlib.pyplot as plt
 import functools
+import environment
+import agent
 # %matplotlib inline
 
 class GridWorld:
