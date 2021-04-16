@@ -1,4 +1,6 @@
-
+import numpy as np
+import operator
+import matplotlib.pyplot as plt
 
 class RandomAgent():        
     # Choose a random action
