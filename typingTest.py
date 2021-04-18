@@ -4,8 +4,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import time
 import functools
-import Environment
-import Agent
+import environment
+import agent
 import sys
 # %matplotlib inline
 
@@ -73,10 +73,10 @@ class Ui_MainWindow(object):
 		self.textEdit.setDisabled(False)
 		self.work.start()
 		self.startTime=time.time()
-		environment = Environment.GridWorld()
-		agentQ = Agent.Q_Agent(environment)
-		update_call= functools.partial(self.updateInfo, environment=environment, agent = agentQ)
-		self.work.trigger.connect(update_call)
+		self.environment = environment.GridWorld()
+		self.agentQ = agent.Q_Agent(self.environment)
+		self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
+		self.work.trigger.connect(self.update_call)
 
 	def resetTest(self):
 		self.work.quit()
@@ -88,7 +88,6 @@ class Ui_MainWindow(object):
 
 	def updateInfo(self, environment, agent):
 		#Calculate time interval
-
 		time_interval=None
 		time_interval=(time.time()-self.startTime)/60
 
@@ -115,11 +114,11 @@ class Ui_MainWindow(object):
 		self.label.setText("WPM:"+str(wpm))
 		self.label_2.setText("IPM:"+str(ipm))	
 
-		old_state = environment.current_location
-		action = agent.choose_action(environment.actions)
-		reward = environment.make_step(action)
+		old_state = self.environment.current_location
+		action = agent.choose_action(self.environment.actions)
+		reward = self.environment.make_step(action)
 		print(reward)
-		new_state = environment.current_location
+		new_state = self.environment.current_location
 		print(new_state)
 		agent.learn(old_state,reward, new_state,action)
 
