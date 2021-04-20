@@ -34,7 +34,7 @@ class GridWorld:
         self.grid[ self.gold_location[0], self.gold_location[1]] = 10
         self.grid[0,1] = -8
         self.grid[0,2] = -5
-        self.grid[0,3] = 5
+        self.grid[0,3] = 0
 
         # Set available actions
         self.actions = ['UP', 'DOWN', 'LEFT', 'RIGHT']
@@ -64,60 +64,60 @@ class GridWorld:
 
         
 
-        a = 1
-        if a == 1:
-            if self.current_location[1] == 4:
-                self.current_location = ( self.current_location[0], self.current_location[1])
-                reward = self.get_reward(self.current_location)
+        # a = 1
+        # if a == 1:
+        #     if self.current_location[1] == 4:
+        #         self.current_location = ( self.current_location[0], self.current_location[1])
+        #         reward = self.get_reward(self.current_location)
+        #     else:
+        #         self.current_location = ( self.current_location[0], self.current_location[1]+1)
+        #         reward = self.get_reward(self.current_location)
+        # elif a == 0:
+        #     self.current_location = ( self.current_location[0], self.current_location[1])
+        #     reward = self.get_reward(self.current_location)
+        # else:
+        #     if self.current_location[1] == 0:
+        #         self.current_location = ( self.current_location[0], self.current_location[1])
+        #         reward = self.get_reward(self.current_location)
+        #     else:
+        #         self.current_location = ( self.current_location[0], self.current_location[1]-1)
+        #         reward = self.get_reward(self.current_location)
+        
+        # UP
+        if action == 'UP':
+            # If agent is at the top, stay still, collect reward
+            if last_location[0] == 0:
+                reward = self.get_reward(last_location)
             else:
-                self.current_location = ( self.current_location[0], self.current_location[1]+1)
-                reward = self.get_reward(self.current_location)
-        elif a == 0:
-            self.current_location = ( self.current_location[0], self.current_location[1])
-            reward = self.get_reward(self.current_location)
-        else:
-            if self.current_location[1] == 0:
-                self.current_location = ( self.current_location[0], self.current_location[1])
-                reward = self.get_reward(self.current_location)
-            else:
-                self.current_location = ( self.current_location[0], self.current_location[1]-1)
+                self.current_location = ( self.current_location[0] - 1, self.current_location[1])
                 reward = self.get_reward(self.current_location)
         
-#         # UP
-#         if action == 'UP':
-#             # If agent is at the top, stay still, collect reward
-#             if last_location[0] == 0:
-#                 reward = self.get_reward(last_location)
-#             else:
-#                 self.current_location = ( self.current_location[0] - 1, self.current_location[1])
-#                 reward = self.get_reward(self.current_location)
-        
-#         # DOWN
-#         elif action == 'DOWN':
-#             # If agent is at bottom, stay still, collect reward
-#             if last_location[0] == self.height - 1:
-#                 reward = self.get_reward(last_location)
-#             else:
-#                 self.current_location = ( self.current_location[0] + 1, self.current_location[1])
-#                 reward = self.get_reward(self.current_location)
+        # DOWN
+        elif action == 'DOWN':
+            # If agent is at bottom, stay still, collect reward
+            if last_location[0] == self.height - 1:
+                reward = self.get_reward(last_location)
+            else:
+                self.current_location = ( self.current_location[0] + 1, self.current_location[1])
+                reward = self.get_reward(self.current_location)
             
-#         # LEFT
-#         elif action == 'LEFT':
-#             # If agent is at the left, stay still, collect reward
-#             if last_location[1] == 0:
-#                 reward = self.get_reward(last_location)
-#             else:
-#                 self.current_location = ( self.current_location[0], self.current_location[1] - 1)
-#                 reward = self.get_reward(self.current_location)
+        # LEFT
+        elif action == 'LEFT':
+            # If agent is at the left, stay still, collect reward
+            if last_location[1] == 0:
+                reward = self.get_reward(last_location)
+            else:
+                self.current_location = ( self.current_location[0], self.current_location[1] - 1)
+                reward = self.get_reward(self.current_location)
 
-#         # RIGHT
-#         elif action == 'RIGHT':
-#             # If agent is at the right, stay still, collect reward
-#             if last_location[1] == self.width - 1:
-#                 reward = self.get_reward(last_location)
-#             else:
-#                 self.current_location = ( self.current_location[0], self.current_location[1] + 1)
-#                 reward = self.get_reward(self.current_location)
+        # RIGHT
+        elif action == 'RIGHT':
+            # If agent is at the right, stay still, collect reward
+            if last_location[1] == self.width - 1:
+                reward = self.get_reward(last_location)
+            else:
+                self.current_location = ( self.current_location[0], self.current_location[1] + 1)
+                reward = self.get_reward(self.current_location)
                 
         return reward
     

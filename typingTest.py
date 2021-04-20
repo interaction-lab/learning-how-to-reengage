@@ -116,8 +116,8 @@ class Ui_MainWindow(object):
 
 		old_state = self.environment.current_location
 		action = agent.choose_action(self.environment.actions)
+		print(action)
 		reward = self.environment.make_step(action)
-		print(reward)
 		new_state = self.environment.current_location
 		print(new_state)
 		agent.learn(old_state,reward, new_state,action)
