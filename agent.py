@@ -22,7 +22,7 @@ class Q_Agent():
         self.alpha = alpha
         self.gamma = gamma
         
-    def choose_action(self, available_actions):µ
+    def choose_action(self, available_actions):
         """Returns the optimal action from Q-Value table. If multiple optimal actions, chooses random choice.
         Will make an exploratory random action dependent on epsilon."""
         if np.random.uniform(0,1) < self.epsilon:

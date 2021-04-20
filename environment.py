@@ -21,7 +21,8 @@ class GridWorld:
         self.grid = np.zeros((self.height, self.width))
                 
         # Set random start location for the agent
-        self.current_location = (0,  np.random.randint(0,5))
+        # self.current_location = (0,  np.random.randint(0,5))
+        self.current_location = (0,0)
         
         # Set locations for the bomb and the gold
         self.bomb_location = (0,0)
