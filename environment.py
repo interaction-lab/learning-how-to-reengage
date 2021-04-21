@@ -62,26 +62,7 @@ class GridWorld:
         # Store previous location
         last_location = self.current_location
 
-        
-
-        # a = 1
-        # if a == 1:
-        #     if self.current_location[1] == 4:
-        #         self.current_location = ( self.current_location[0], self.current_location[1])
-        #         reward = self.get_reward(self.current_location)
-        #     else:
-        #         self.current_location = ( self.current_location[0], self.current_location[1]+1)
-        #         reward = self.get_reward(self.current_location)
-        # elif a == 0:
-        #     self.current_location = ( self.current_location[0], self.current_location[1])
-        #     reward = self.get_reward(self.current_location)
-        # else:
-        #     if self.current_location[1] == 0:
-        #         self.current_location = ( self.current_location[0], self.current_location[1])
-        #         reward = self.get_reward(self.current_location)
-        #     else:
-        #         self.current_location = ( self.current_location[0], self.current_location[1]-1)
-        #         reward = self.get_reward(self.current_location)
+    
         
         # UP
         if action == 'UP':
