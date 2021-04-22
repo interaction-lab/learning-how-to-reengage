@@ -68,20 +68,28 @@ class Ui_MainWindow(object):
 		self.inputNumLast = 0
 		self.wpm=None #Word per minute
 		self.ipm=None #Input per minute
+		self.allInputNum=[]
+		self.validInputNum=[]
 
 	def startTest(self):
+		self.allInputNum=[]
+		self.validAlphaNum=[]
 		self.textEdit.setPlaceholderText("")
 		self.textEdit.setDisabled(False)
 		self.work.start()
-		self.startTime=time.time()
 		self.environment = environment.GridWorld()
 		self.agentQ = agent.Q_Agent(self.environment)
 		self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
 		pg.mixer.init()
 		self.work.trigger.connect(self.update_call)
 
+		# Start timer
+		self.startTime=time.time()
+
 	def resetTest(self):
 		self.work.quit()
+		self.allInputNum=[]
+		self.validAlphaNum=[]
 		self.inputNum=0
 		self.textEdit.setPlainText("")
 		self.textEdit.setDisabled(True)
@@ -90,7 +98,6 @@ class Ui_MainWindow(object):
 
 	def updateInfo(self, environment, agent):
 		#Calculate time interval
-		time_interval=None
 		time_interval=(time.time()-self.startTime)/60
 
 		#Just keep characters from textEdit
@@ -99,20 +106,25 @@ class Ui_MainWindow(object):
 		new_text=''.join(list(temp))
 		print(new_text)
 
-		if self.inputNumLast == 0:
-			wpm=round((len(new_text)/5)/5)
-			ipm= self.inputNum/5
-			self.inputNumLast = self.inputNum
-		else:
-			print('!!')
-			wpm=round((len(new_text)/5)/5)
-			ipm=(self.inputNum - self.inputNumLast)/5
-			self.inputNumLast = self.inputNum
+		#Suppose after sleep(1), these two lists will append the number of 1,2,3,4,5 seconds.
+		#I mean this may not very accurate.
+		self.allInputNum.append(self.inputNum)
+		self.validAlphaNum.append(len(new_text))
 
-		# print(time_interval)
-		# print(self.inputNum)
-		# print(len(new_text))
-		# print("----------")
+		# This is what Haaao wrote, Liam keeps them here for possible future use.
+		# if self.inputNumLast == 0:
+		# 	wpm=round((len(new_text)/5)/5)
+		# 	ipm= self.inputNum/5
+		# 	self.inputNumLast = self.inputNum
+		# else:
+		# 	print('!!')
+		# 	wpm=round((len(new_text)/5)/5)
+		# 	ipm=(self.inputNum - self.inputNumLast)/5 
+		# 	self.inputNumLast = self.inputNum
+
+		timeIs=len(self.allInputNum)
+		wpm,ipm=self.getWPMandIPM(timeIs,30)
+
 		self.label.setText("WPM:"+str(wpm))
 		self.label_2.setText("IPM:"+str(ipm))	
 
@@ -123,6 +135,18 @@ class Ui_MainWindow(object):
 		new_state = self.environment.current_location
 		print(new_state)
 		agent.learn(old_state,reward, new_state,action)
+
+	def getWPMandIPM(self,time,interval):
+		"""Given time t, and time interval, we calculate the wpm and ipm
+		"""
+		if time <= interval:
+			wpm=round(self.validAlphaNum[time-1]/time)
+			ipm=round(self.allInputNum[time-1]/time)
+		else:
+			wpm=round((self.validAlphaNum[time-1]-self.validAlphaNum[time-1-interval])/interval)
+			ipm=round((self.allInputNum[time-1]-self.allInputNum[time-1-interval])/interval)
+		
+		return wpm,ipm
 
 	def textEdit_callback(self):
 		self.inputNum+=1
@@ -144,7 +168,7 @@ class WorkThread(QThread):
 
 	def run(self):
 		while 1:
-			time.sleep(5)
+			time.sleep(1)
 			self.trigger.emit(str(1))
 	
 
