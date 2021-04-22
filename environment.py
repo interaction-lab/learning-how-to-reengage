@@ -10,6 +10,7 @@
 import numpy as np
 import operator
 import matplotlib.pyplot as plt
+import pygame as pg
 # %matplotlib inline
 
 class GridWorld:
@@ -77,7 +78,8 @@ class GridWorld:
         elif action == 'Critisize':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
-
+            pg.mixer.music.load('critisize.mp3')
+            pg.mixer.music.play()
 
             # If agent is at bottom, stay still, collect reward
             if last_location[0] == self.height - 1:
@@ -90,7 +92,8 @@ class GridWorld:
         elif action == 'Encourage':
             # Take the action
             print("I am impressed by how much you are pushing yourself! The more you try, the better you will be at writing.")
-
+            pg.mixer.music.load('encourage.mp3')
+            pg.mixer.music.play()
             # If agent is at the right, stay still, collect reward
             if last_location[1] == self.width - 1:
                 reward = self.get_reward(last_location)

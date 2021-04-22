@@ -7,6 +7,7 @@ import functools
 import environment
 import agent
 import sys
+import pygame as pg
 # %matplotlib inline
 
 
@@ -76,6 +77,7 @@ class Ui_MainWindow(object):
 		self.environment = environment.GridWorld()
 		self.agentQ = agent.Q_Agent(self.environment)
 		self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
+		pg.mixer.init()
 		self.work.trigger.connect(self.update_call)
 
 	def resetTest(self):
