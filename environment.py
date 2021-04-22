@@ -37,7 +37,7 @@ class GridWorld:
         self.grid[0,3] = 0
 
         # Set available actions
-        self.actions = ['UP', 'DOWN', 'LEFT', 'RIGHT']
+        self.actions = ['Critisize', 'Encourage', 'None']
     
         
     ## Put methods here:
@@ -65,34 +65,32 @@ class GridWorld:
     
         
         # UP
-        if action == 'UP':
+        if action == 'None':
             # If agent is at the top, stay still, collect reward
             if last_location[0] == 0:
                 reward = self.get_reward(last_location)
             else:
-                self.current_location = ( self.current_location[0] - 1, self.current_location[1])
+                self.current_location = ( self.current_location[0] , self.current_location[1])
                 reward = self.get_reward(self.current_location)
         
         # DOWN
-        elif action == 'DOWN':
+        elif action == 'Critisize':
+            # Take the action
+            print("You are such a lazy bum, and you are so bad at writing")
+
+
             # If agent is at bottom, stay still, collect reward
             if last_location[0] == self.height - 1:
                 reward = self.get_reward(last_location)
             else:
-                self.current_location = ( self.current_location[0] + 1, self.current_location[1])
+                self.current_location = ( self.current_location[0] , self.current_location[1] - 1)
                 reward = self.get_reward(self.current_location)
             
-        # LEFT
-        elif action == 'LEFT':
-            # If agent is at the left, stay still, collect reward
-            if last_location[1] == 0:
-                reward = self.get_reward(last_location)
-            else:
-                self.current_location = ( self.current_location[0], self.current_location[1] - 1)
-                reward = self.get_reward(self.current_location)
-
         # RIGHT
-        elif action == 'RIGHT':
+        elif action == 'Encourage':
+            # Take the action
+            print("I am impressed by how much you are pushing yourself! The more you try, the better you will be at writing.")
+
             # If agent is at the right, stay still, collect reward
             if last_location[1] == self.width - 1:
                 reward = self.get_reward(last_location)
