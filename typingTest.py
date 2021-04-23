@@ -125,6 +125,7 @@ class Ui_MainWindow(object):
 		timeIs=len(self.allInputNum)
 		wpm,ipm=self.getWPMandIPM(timeIs,30)
 
+		#test github
 		self.label.setText("WPM:"+str(wpm))
 		self.label_2.setText("IPM:"+str(ipm))	
 
