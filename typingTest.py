@@ -62,7 +62,8 @@ class Ui_MainWindow(object):
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 		#Added code here
-		self.work = WorkThread() #Work Thread
+		self.recordWork = RecordWorkThread() #Work Thread
+		self.qlearningWork = QLearningWorkThread() 
 		self.startTime=None
 		self.inputNum=0 #All keyboard inputNum
 		self.inputNumLast = 0
@@ -76,12 +77,14 @@ class Ui_MainWindow(object):
 		self.validAlphaNum=[]
 		self.textEdit.setPlaceholderText("")
 		self.textEdit.setDisabled(False)
-		self.work.start()
+		self.recordWork.start()
+		self.qlearningWork.start()
 		self.environment = environment.GridWorld()
 		self.agentQ = agent.Q_Agent(self.environment)
 		self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
 		pg.mixer.init()
-		self.work.trigger.connect(self.update_call)
+		self.recordWork.recordTrigger.connect(self.recordInputInfo)
+		self.qlearningWork.qlearningTrigger.connect(self.update_call)
 
 		# Start timer
 		self.startTime=time.time()
@@ -96,7 +99,7 @@ class Ui_MainWindow(object):
 		self.label.setText("WPM:-")
 		self.label_2.setText("IPM:-")
 
-	def updateInfo(self, environment, agent):
+	def recordInputInfo(self):
 		#Calculate time interval
 		time_interval=(time.time()-self.startTime)/60
 
@@ -111,17 +114,6 @@ class Ui_MainWindow(object):
 		self.allInputNum.append(self.inputNum)
 		self.validAlphaNum.append(len(new_text))
 
-		# This is what Haaao wrote, Liam keeps them here for possible future use.
-		# if self.inputNumLast == 0:
-		# 	wpm=round((len(new_text)/5)/5)
-		# 	ipm= self.inputNum/5
-		# 	self.inputNumLast = self.inputNum
-		# else:
-		# 	print('!!')
-		# 	wpm=round((len(new_text)/5)/5)
-		# 	ipm=(self.inputNum - self.inputNumLast)/5 
-		# 	self.inputNumLast = self.inputNum
-
 		timeIs=len(self.allInputNum)
 		wpm,ipm=self.getWPMandIPM(timeIs,30)
 
@@ -129,6 +121,8 @@ class Ui_MainWindow(object):
 		self.label.setText("WPM:"+str(wpm))
 		self.label_2.setText("IPM:"+str(ipm))	
 
+
+	def updateInfo(self, environment, agent):
 		old_state = self.environment.current_location
 		action = agent.choose_action(self.environment.actions)
 		print(action)
@@ -161,17 +155,29 @@ class Ui_MainWindow(object):
 		self.label_2.setText(_translate("MainWindow", "IPM:-"))
 		self.textEdit.setPlaceholderText('Click Start Button.')
 
-class WorkThread(QThread):
-	trigger = pyqtSignal(str)
+#For recording input info once per second
+class RecordWorkThread(QThread):
+	recordTrigger = pyqtSignal(str)
 
 	def __int__(self):
-		super(WorkThread, self).__init__()
+		super(RecordWorkThread, self).__init__()
 
 	def run(self):
 		while 1:
 			time.sleep(1)
-			self.trigger.emit(str(1))
-	
+			self.recordTrigger.emit(str(1))
+
+#For updating Qagent per once per 30 seconds
+class QLearningWorkThread(QThread):
+	qlearningTrigger = pyqtSignal(str)
+
+	def __int__(self):
+		super(QLearningWorkThread, self).__init__()
+
+	def run(self):
+		while 1:
+			time.sleep(30)
+			self.qlearningTrigger.emit(str(1))
 
 if __name__ == "__main__":
 	app = QtWidgets.QApplication(sys.argv)
