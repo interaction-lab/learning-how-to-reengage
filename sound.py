@@ -3,9 +3,10 @@ import time
 import pyaudio     #sudo apt-get install python-pyaudio
 import playsound    #pip install playsound
 import pygame
-from audioplayer import AudioPlayer
+#from audioplayer import AudioPlayer
 PyAudio = pyaudio.PyAudio     #initialize pyaudio
 pygame.mixer.init()
+
 
 class noise:
     def __init__(self, samplerate = 42100,length = 1):
@@ -26,19 +27,30 @@ class noise:
 
 
 
+    # lvl is the base multiplier for frequency (pitch, by 200)
+    # generates a sign wave at the frequency and add to wave
+    # alternate between 50% to 100% (0.5 frequency vs 1 frequency)
+    # length of segment is defined in initialization
+    def generateWhiteNoise(self, level):
+        freq = level * 200
+        for x in iter(range(int(self.numframe/4))):
+            self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq) / math.pi)) * 127 + 128))
 
-    # def generateWhiteNoise(self, level):
-    #     freq = level * 200
-    #     for x in xrange(self.numframe):
-    #         self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq) / math.pi)) * 127 + 128))
-    #     for x in xrange(self.restframe):
-    #         self.wave = self.wave + chr(128)
-    #     self.stream.write(self.wave)
-    #     self.stream.stop_stream()
-    def playClick(self):
-        # playsound.playsound('click.mp3', True)
-        AudioPlayer("click.mp3").play(block=True)
-    def playClickForSec(self, times = 1,lvl = 1):
+        for x in iter(range(int(self.numframe/4))):
+            self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq/2) / math.pi)) * 127 + 128))
+
+        for x in iter(range(int(self.numframe/4))):
+            self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq) / math.pi)) * 127 + 128))
+
+        for x in iter(range(int(self.numframe/4))):
+            self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq/2) / math.pi)) * 127 + 128))
+
+        self.stream.write(self.wave)
+        #self.stream.stop_stream()
+    # def playClick(self):
+    #     # playsound.playsound('click.mp3', True)
+    #     AudioPlayer("click.mp3").play(block=True)
+def playClickForSec(times = 1,lvl = 1):
         if lvl == 1:
             pygame.mixer.music.load("click_slow.mp3")
         elif (lvl == 2):
@@ -49,11 +61,13 @@ class noise:
         time.sleep(times)
 noi = noise()
 #play one Click
-noi.playClickForSec(1,1)
-noi.playClickForSec(2,2)
-noi.playClickForSec(3,3)
+# playClickForSec(1,1)
+# playClickForSec(2,2)
+# playClickForSec(3,3)
 #play a white noise at a level
-#noi.generateWhiteNoise(1)
-
+noi.generateWhiteNoise(1)
+noi.generateWhiteNoise(2)
+noi.generateWhiteNoise(5)
+noi.generateWhiteNoise(10)
 # pygame.mixer.music.play(-1, 0.0)
 # time.sleep(5)
