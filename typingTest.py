@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
 		self.ipm=None #Input per minute
 		self.allInputNum=[]
 		self.validInputNum=[]
+		self.beforeAction='None'
 
 	def startTest(self):
 		self.allInputNum=[]
@@ -115,21 +116,49 @@ class Ui_MainWindow(object):
 		self.validAlphaNum.append(len(new_text))
 
 		timeIs=len(self.allInputNum)
-		wpm,ipm=self.getWPMandIPM(timeIs,30)
+		wpm,ipm=self.getWPMandIPM(timeIs,5)
 
 		#test github
-		self.label.setText("WPM:"+str(wpm))
-		self.label_2.setText("IPM:"+str(ipm))	
+		self.label.setText("WPM:"+str(wpm))	
+		self.label_2.setText("IPM:"+str(ipm))
+
+		self.wpm=wpm
+		self.ipm=ipm
 
 
 	def updateInfo(self, environment, agent):
+		# get old state
 		old_state = self.environment.current_location
-		action = agent.choose_action(self.environment.actions)
-		print(action)
-		reward = self.environment.make_step(action)
-		new_state = self.environment.current_location
+
+		# print("self.environment.actions",self.environment.actions)
+		# action = agent.choose_action(self.environment.actions)
+		print(old_state)
+		print(self.beforeAction)
+		new_state=self.getCurrentLocation()
+
+		reward = self.environment.make_step(self.beforeAction, new_state)
+		
+		# new_state = self.environment.current_location
 		print(new_state)
-		agent.learn(old_state,reward, new_state,action)
+		agent.learn(old_state,reward, new_state,self.beforeAction)
+
+		self.beforeAction=agent.choose_action(self.environment.actions)
+
+
+	def getCurrentLocation(self):
+		new_state=None
+		if self.wpm<=2:
+			new_state=(0,0)
+		elif self.wpm>2 and self.wpm<=4:
+			new_state=(0,1)
+		elif self.wpm>4 and self.wpm<=6:
+			new_state=(0,2)
+		elif self.wpm>6 and self.wpm<=8:
+			new_state=(0,3)		
+		else:
+			new_state=(0,4)	
+		
+		return new_state
 
 	def getWPMandIPM(self,time,interval):
 		"""Given time t, and time interval, we calculate the wpm and ipm
@@ -176,7 +205,7 @@ class QLearningWorkThread(QThread):
 
 	def run(self):
 		while 1:
-			time.sleep(30)
+			time.sleep(5)
 			self.qlearningTrigger.emit(str(1))
 
 if __name__ == "__main__":
