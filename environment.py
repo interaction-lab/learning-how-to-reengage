@@ -70,7 +70,7 @@ class GridWorld:
         elif action == 'Click':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
-            pg.mixer.music.load('critisize.mp3')
+            pg.mixer.music.load('click.mp3')
             pg.mixer.music.play()       
         # RIGHT
         elif action == 'Encourage':
