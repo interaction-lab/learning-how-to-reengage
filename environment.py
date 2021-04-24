@@ -57,11 +57,10 @@ class GridWorld:
         return self.grid[ new_location[0], new_location[1]]
         
     
-    def make_step(self, action, new_state):
+    def make_step(self, action):
         """Moves the agent in the specified direction. If agent is at a border, agent stays still
         but takes negative reward. Function returns the reward for the move."""
 
-        self.current_location=new_state
         reward=self.get_reward(self.current_location)
 
         # UP
