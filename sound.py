@@ -29,8 +29,8 @@ class noise:
             self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq) / math.pi)) * 127 + 128))
         for x in xrange(self.restframe):
             self.wave = self.wave + chr(128)
-        stream.write(self.wave)
-        stream.stop_stream()
+        self.stream.write(self.wave)
+        self.stream.stop_stream()
     def playClick(self):
         playsound.playsound('click.mp3', True)
 
