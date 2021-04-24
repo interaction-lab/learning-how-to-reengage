@@ -57,49 +57,28 @@ class GridWorld:
         return self.grid[ new_location[0], new_location[1]]
         
     
-    def make_step(self, action):
+    def make_step(self, action, new_state):
         """Moves the agent in the specified direction. If agent is at a border, agent stays still
         but takes negative reward. Function returns the reward for the move."""
-        # Store previous location
-        last_location = self.current_location
 
-    
-        
+        self.current_location=new_state
+        reward=self.get_reward(self.current_location)
+
         # UP
         if action == 'None':
-            # If agent is at the top, stay still, collect reward
-            if last_location[0] == 0:
-                reward = self.get_reward(last_location)
-            else:
-                self.current_location = ( self.current_location[0] , self.current_location[1])
-                reward = self.get_reward(self.current_location)
-        
+            print("None")
         # DOWN
         elif action == 'Critisize':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
             pg.mixer.music.load('critisize.mp3')
-            pg.mixer.music.play()
-
-            # If agent is at bottom, stay still, collect reward
-            if last_location[0] == self.height - 1:
-                reward = self.get_reward(last_location)
-            else:
-                self.current_location = ( self.current_location[0] , self.current_location[1] - 1)
-                reward = self.get_reward(self.current_location)
-            
+            pg.mixer.music.play()       
         # RIGHT
         elif action == 'Encourage':
             # Take the action
             print("I am impressed by how much you are pushing yourself! The more you try, the better you will be at writing.")
             pg.mixer.music.load('encourage.mp3')
             pg.mixer.music.play()
-            # If agent is at the right, stay still, collect reward
-            if last_location[1] == self.width - 1:
-                reward = self.get_reward(last_location)
-            else:
-                self.current_location = ( self.current_location[0], self.current_location[1] + 1)
-                reward = self.get_reward(self.current_location)
                 
         return reward
     
