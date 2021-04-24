@@ -138,7 +138,9 @@ class Ui_MainWindow(object):
 
 		reward = self.environment.make_step(self.action)
 
-		agent.learn(old_state, reward, self.environment.current_location, old_action)
+		human_reward = self.get_human_reward()
+
+		agent.learn(old_state, reward, human_reward, self.environment.current_location, old_action)
 
 
 
