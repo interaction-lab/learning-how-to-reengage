@@ -16,7 +16,7 @@ class Q_Agent():
         self.q_table = dict() # Store all Q-values in dictionary of dictionaries 
         for x in range(environment.height): # Loop through all possible grid spaces, create sub-dictionary for each
             for y in range(environment.width):
-                self.q_table[(x,y)] = {'Critisize':0, 'Encourage':0, 'None':0} # Populate sub-dictionary with zero values for possible moves
+                self.q_table[(x,y)] = {'Click':0, 'Encourage':0, 'None':0} # Populate sub-dictionary with zero values for possible moves
 
         self.epsilon = epsilon
         self.alpha = alpha
@@ -34,11 +34,11 @@ class Q_Agent():
         
         return action
     
-    def learn(self, old_state, reward, new_state, action):
+    def learn(self, old_state, reward, human_reward, new_state, action):
         """Updates the Q-value table using Q-learning"""
         print(new_state)
         q_values_of_state = self.q_table[new_state]
         max_q_value_in_new_state = max(q_values_of_state.values())
         current_q_value = self.q_table[old_state][action]
         
-        self.q_table[old_state][action] = (1 - self.alpha) * current_q_value + self.alpha * (reward + self.gamma * max_q_value_in_new_state)
+        self.q_table[old_state][action] = (1 - self.alpha) * current_q_value + self.alpha * ((reward + human_reward) + self.gamma * max_q_value_in_new_state)

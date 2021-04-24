@@ -71,7 +71,7 @@ class Ui_MainWindow(object):
 		self.ipm=None #Input per minute
 		self.allInputNum=[]
 		self.validInputNum=[]
-		self.beforeAction='None'
+		self.action='None'
 
 	def startTest(self):
 		self.allInputNum=[]
@@ -130,24 +130,21 @@ class Ui_MainWindow(object):
 		# get old state
 		old_state = self.environment.current_location
 
-		# print("self.environment.actions",self.environment.actions)
-		# action = agent.choose_action(self.environment.actions)
-		print(old_state)
-		print(self.beforeAction)
-		new_state=self.getCurrentLocation()
+		old_action = self.action
 
-		reward = self.environment.make_step(self.beforeAction, new_state)
-		
-		# new_state = self.environment.current_location
-		print(new_state)
-		agent.learn(old_state,reward, new_state,self.beforeAction)
+		self.environment.current_location = self.getCurrentLocation()
 
-		self.beforeAction=agent.choose_action(self.environment.actions)
+		self.action = agent.choose_action(self.environment.actions)
+
+		reward = self.environment.make_step(self.action)
+
+		agent.learn(old_state, reward, self.human_reward, self.environment.current_location, old_action)
+
 
 
 	def getCurrentLocation(self):
 		new_state=None
-		if self.wpm<=2:
+		if self.wpm<=2: 
 			new_state=(0,0)
 		elif self.wpm>2 and self.wpm<=4:
 			new_state=(0,1)

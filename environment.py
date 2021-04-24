@@ -38,7 +38,7 @@ class GridWorld:
         self.grid[0,3] = 0
 
         # Set available actions
-        self.actions = ['Critisize', 'Encourage', 'None']
+        self.actions = ['Click', 'Encourage', 'None']
     
         
     ## Put methods here:
@@ -57,21 +57,20 @@ class GridWorld:
         return self.grid[ new_location[0], new_location[1]]
         
     
-    def make_step(self, action, new_state):
+    def make_step(self, action):
         """Moves the agent in the specified direction. If agent is at a border, agent stays still
         but takes negative reward. Function returns the reward for the move."""
 
-        self.current_location=new_state
         reward=self.get_reward(self.current_location)
 
         # UP
         if action == 'None':
             print("None")
         # DOWN
-        elif action == 'Critisize':
+        elif action == 'Click':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
-            pg.mixer.music.load('critisize.mp3')
+            pg.mixer.music.load('click.mp3')
             pg.mixer.music.play()       
         # RIGHT
         elif action == 'Encourage':
