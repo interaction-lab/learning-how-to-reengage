@@ -16,7 +16,7 @@ class Q_Agent():
         self.q_table = dict() # Store all Q-values in dictionary of dictionaries 
         for x in range(environment.height): # Loop through all possible grid spaces, create sub-dictionary for each
             for y in range(environment.width):
-                self.q_table[(x,y)] = {'Critisize':0, 'Encourage':0, 'None':0} # Populate sub-dictionary with zero values for possible moves
+                self.q_table[(x,y)] = {'Click':0, 'Encourage':0, 'None':0} # Populate sub-dictionary with zero values for possible moves
 
         self.epsilon = epsilon
         self.alpha = alpha

@@ -38,7 +38,7 @@ class GridWorld:
         self.grid[0,3] = 0
 
         # Set available actions
-        self.actions = ['Critisize', 'Encourage', 'None']
+        self.actions = ['Click', 'Encourage', 'None']
     
         
     ## Put methods here:
@@ -67,7 +67,7 @@ class GridWorld:
         if action == 'None':
             print("None")
         # DOWN
-        elif action == 'Critisize':
+        elif action == 'Click':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
             pg.mixer.music.load('critisize.mp3')

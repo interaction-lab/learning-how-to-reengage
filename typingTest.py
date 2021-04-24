@@ -140,12 +140,11 @@ class Ui_MainWindow(object):
 
 		agent.learn(old_state, reward, self.environment.current_location, old_action)
 
-		self.beforeAction=agent.choose_action(self.environment.actions)
 
 
 	def getCurrentLocation(self):
 		new_state=None
-		if self.wpm<=2:
+		if self.wpm<=2: 
 			new_state=(0,0)
 		elif self.wpm>2 and self.wpm<=4:
 			new_state=(0,1)
