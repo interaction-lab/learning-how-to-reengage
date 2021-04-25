@@ -59,6 +59,8 @@ def playClickForSec(times = 1,lvl = 1):
             pygame.mixer.music.load("click_fast.mp3")
         pygame.mixer.music.play(-1, 0.0)
         time.sleep(times)
+
+
 noi = noise()
 #play one Click
 # playClickForSec(1,1)

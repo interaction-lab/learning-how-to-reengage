@@ -72,6 +72,8 @@ class Ui_MainWindow(object):
 		self.allInputNum=[]
 		self.validInputNum=[]
 		self.action='None'
+		self.reward_record = []
+		self.human_reward_record = []
 
 	def startTest(self):
 		self.allInputNum=[]
@@ -91,7 +93,6 @@ class Ui_MainWindow(object):
 		self.startTime=time.time()
 
 	def resetTest(self):
-		self.work.quit()
 		self.allInputNum=[]
 		self.validAlphaNum=[]
 		self.inputNum=0
@@ -99,6 +100,8 @@ class Ui_MainWindow(object):
 		self.textEdit.setDisabled(True)
 		self.label.setText("WPM:-")
 		self.label_2.setText("IPM:-")
+		numpy.savetxt("reward.csv", np.array(self.reward_record), delimiter=",")
+		numpy.savetxt("human_rward.csv", np.array(self.human_reward_record), delimiter=",")
 
 	def recordInputInfo(self):
 		#Calculate time interval
@@ -137,6 +140,9 @@ class Ui_MainWindow(object):
 		self.action = agent.choose_action(self.environment.actions)
 
 		reward = self.environment.make_step(self.action)
+
+		self.reward_record.append(reward)
+		self.human_reward_record.append(self.human_reward)
 
 		agent.learn(old_state, reward, self.human_reward, self.environment.current_location, old_action)
 
@@ -212,3 +218,6 @@ if __name__ == "__main__":
 	ui.setupUi(MainWindow)
 	MainWindow.show()
 	sys.exit(app.exec_())
+
+
+
