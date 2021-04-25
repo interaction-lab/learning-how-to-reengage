@@ -61,13 +61,12 @@ def playClickForSec(times = 1,lvl = 1):
         time.sleep(times)
 
 
-# noi = noise()
-# #play one Click
-# # playClickForSec(1,1)
-# # playClickForSec(2,2)
-# # playClickForSec(3,3)
-# #play a white noise at a level
-# noi.generateWhiteNoise(1)
-
+#noi = noise()
+#play one Click
+# playClickForSec(1,1)
+# playClickForSec(2,2)
+# playClickForSec(3,3)
+#play a white noise at a level
+#noi.generateWhiteNoise(1)
 # pygame.mixer.music.play(-1, 0.0)
 # time.sleep(5)
