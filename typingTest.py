@@ -19,36 +19,53 @@ class Ui_MainWindow(object):
 		self.centralwidget.setObjectName("centralwidget")
 		self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
 		self.gridLayout_2.setObjectName("gridLayout_2")
+		self.gridLayout = QtWidgets.QGridLayout()
+		self.gridLayout.setObjectName("gridLayout")
 		self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
 		font = QtGui.QFont()
 		font.setPointSize(14)
 		self.textEdit.setFont(font)
 		self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
 		self.textEdit.setObjectName("textEdit")
-		self.gridLayout_2.addWidget(self.textEdit, 0, 0, 1, 1)
-		self.splitter = QtWidgets.QSplitter(self.centralwidget)
-		self.splitter.setOrientation(QtCore.Qt.Horizontal)
-		self.splitter.setObjectName("splitter")
-		self.widget = QtWidgets.QWidget(self.splitter)
-		self.widget.setObjectName("widget")
-		self.gridLayout = QtWidgets.QGridLayout(self.widget)
-		self.gridLayout.setContentsMargins(0, 0, 0, 0)
-		self.gridLayout.setObjectName("gridLayout")
-		self.pushButton = QtWidgets.QPushButton(self.widget)
+		self.gridLayout.addWidget(self.textEdit, 0, 0, 1, 1)
+		self.horizontalLayout = QtWidgets.QHBoxLayout()
+		self.horizontalLayout.setObjectName("horizontalLayout")
+		self.pushButton = QtWidgets.QPushButton(self.centralwidget)
 		self.pushButton.setObjectName("pushButton")
-		self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
-		self.pushButton_2 = QtWidgets.QPushButton(self.widget)
+		self.horizontalLayout.addWidget(self.pushButton)
+		self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
 		self.pushButton_2.setObjectName("pushButton_2")
-		self.gridLayout.addWidget(self.pushButton_2, 0, 1, 1, 1)
+		self.horizontalLayout.addWidget(self.pushButton_2)
 		spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-		self.gridLayout.addItem(spacerItem, 0, 2, 1, 1)
-		self.label = QtWidgets.QLabel(self.widget)
+		self.horizontalLayout.addItem(spacerItem)
+		self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+		self.pushButton_3.setStyleSheet("border:none; background-color: gray")
+		self.pushButton_3.setEnabled(False)
+		self.pushButton_3.setObjectName("pushButton_3")
+		self.horizontalLayout.addWidget(self.pushButton_3)
+		self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+		self.pushButton_4.setStyleSheet("border:none; background-color: gray")
+		self.pushButton_4.setEnabled(False)
+		self.pushButton_4.setObjectName("pushButton_4")
+		self.horizontalLayout.addWidget(self.pushButton_4)
+		self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+		sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+		sizePolicy.setHorizontalStretch(0)
+		sizePolicy.setVerticalStretch(0)
+		sizePolicy.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
+		self.pushButton_5.setSizePolicy(sizePolicy)
+		self.pushButton_5.setStyleSheet("border:none; background-color: gray")
+		self.pushButton_5.setEnabled(False)
+		self.pushButton_5.setObjectName("pushButton_5")
+		self.horizontalLayout.addWidget(self.pushButton_5)
+		self.label = QtWidgets.QLabel(self.centralwidget)
 		self.label.setObjectName("label")
-		self.gridLayout.addWidget(self.label, 0, 3, 1, 1)
-		self.label_2 = QtWidgets.QLabel(self.widget)
+		self.horizontalLayout.addWidget(self.label)
+		self.label_2 = QtWidgets.QLabel(self.centralwidget)
 		self.label_2.setObjectName("label_2")
-		self.gridLayout.addWidget(self.label_2, 0, 4, 1, 1)
-		self.gridLayout_2.addWidget(self.splitter, 1, 0, 1, 1)
+		self.horizontalLayout.addWidget(self.label_2)
+		self.gridLayout.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+		self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 		MainWindow.setCentralWidget(self.centralwidget)
 		self.statusbar = QtWidgets.QStatusBar(MainWindow)
 		self.statusbar.setObjectName("statusbar")
@@ -57,6 +74,10 @@ class Ui_MainWindow(object):
 		self.retranslateUi(MainWindow)
 		self.pushButton.clicked.connect(self.startTest)
 		self.pushButton_2.clicked.connect(self.resetTest)
+		self.pushButton_3.clicked.connect(self.getNegativeReward)
+		self.pushButton_4.clicked.connect(self.getNormalReward)
+		self.pushButton_5.clicked.connect(self.getPositiveReward)
+
 		self.textEdit.textChanged.connect(self.textEdit_callback)
 		self.textEdit.setDisabled(True)
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -72,8 +93,10 @@ class Ui_MainWindow(object):
 		self.allInputNum=[]
 		self.validInputNum=[]
 		self.action='None'
+
 		self.reward_record = []
 		self.human_reward_record = []
+		self.humanRewardFeedback=0
 
 	def startTest(self):
 		self.allInputNum=[]
@@ -141,16 +164,35 @@ class Ui_MainWindow(object):
 
 		reward = self.environment.make_step(self.action)
 
+		print(self.pushButton_3.isEnabled())
+		if self.pushButton_3.isEnabled():
+			self.humanRewardFeedback=0
+
+		self.activateButton()
+
 		self.reward_record.append(reward)
 		self.human_reward_record.append(self.human_reward)
+		agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 
-		agent.learn(old_state, reward, self.human_reward, self.environment.current_location, old_action)
+	def activateButton(self):
+		self.pushButton_3.setEnabled(True)
+		self.pushButton_4.setEnabled(True)
+		self.pushButton_5.setEnabled(True)
+		self.pushButton_3.setStyleSheet("border:none; background-color: red")
+		self.pushButton_4.setStyleSheet("border:none; background-color: yellow")
+		self.pushButton_5.setStyleSheet("border:none; background-color: green")
 
-
+	def disableButton(self):
+		self.pushButton_3.setEnabled(False)
+		self.pushButton_4.setEnabled(False)
+		self.pushButton_5.setEnabled(False)
+		self.pushButton_3.setStyleSheet("border:none; background-color: gray")
+		self.pushButton_4.setStyleSheet("border:none; background-color: gray")
+		self.pushButton_5.setStyleSheet("border:none; background-color: gray")		
 
 	def getCurrentLocation(self):
 		new_state=None
-		if self.wpm<=2: 
+		if self.wpm<=2:
 			new_state=(0,0)
 		elif self.wpm>2 and self.wpm<=4:
 			new_state=(0,1)
@@ -178,11 +220,28 @@ class Ui_MainWindow(object):
 	def textEdit_callback(self):
 		self.inputNum+=1
 
+	def getNegativeReward(self):
+		self.humanRewardFeedback=-5
+		self.disableButton()
+
+	def getNormalReward(self):
+		self.humanRewardFeedback=0
+		self.disableButton()
+
+	def getPositiveReward(self):
+		self.humanRewardFeedback=5
+		self.disableButton()
+
 	def retranslateUi(self, MainWindow):
 		_translate = QtCore.QCoreApplication.translate
 		MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
 		self.pushButton.setText(_translate("MainWindow", "Start"))
 		self.pushButton_2.setText(_translate("MainWindow", "End"))
+
+		self.pushButton_3.setText(_translate("MainWindow", ""))
+		self.pushButton_4.setText(_translate("MainWindow", ""))
+		self.pushButton_5.setText(_translate("MainWindow", ""))
+
 		self.label.setText(_translate("MainWindow", "WPM:-"))
 		self.label_2.setText(_translate("MainWindow", "IPM:-"))
 		self.textEdit.setPlaceholderText('Click Start Button.')
