@@ -8,6 +8,7 @@ import environment
 import agent
 import sys
 import pygame as pg
+import numpy as np
 # %matplotlib inline
 
 
@@ -123,8 +124,8 @@ class Ui_MainWindow(object):
 		self.textEdit.setDisabled(True)
 		self.label.setText("WPM:-")
 		self.label_2.setText("IPM:-")
-		numpy.savetxt("reward.csv", np.array(self.reward_record), delimiter=",")
-		numpy.savetxt("human_rward.csv", np.array(self.human_reward_record), delimiter=",")
+		np.savetxt("reward.csv", np.array(self.reward_record), delimiter=",")
+		np.savetxt("human_rward.csv", np.array(self.human_reward_record), delimiter=",")
 
 	def recordInputInfo(self):
 		#Calculate time interval
@@ -171,7 +172,7 @@ class Ui_MainWindow(object):
 		self.activateButton()
 
 		self.reward_record.append(reward)
-		self.human_reward_record.append(self.human_reward)
+		self.human_reward_record.append(self.humanRewardFeedback)
 		agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 
 	def activateButton(self):

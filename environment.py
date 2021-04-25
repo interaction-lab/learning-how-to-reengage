@@ -11,6 +11,7 @@ import numpy as np
 import operator
 import matplotlib.pyplot as plt
 import pygame as pg
+import sound
 # %matplotlib inline
 
 class GridWorld:
@@ -70,6 +71,8 @@ class GridWorld:
         elif action == 'Click':
             # Take the action
             print("You are such a lazy bum, and you are so bad at writing")
+            # noi = noise()
+            # noi.generateWhiteNoise(1)
             pg.mixer.music.load('click.mp3')
             pg.mixer.music.play()       
         # RIGHT
