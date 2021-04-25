@@ -210,11 +210,11 @@ class Ui_MainWindow(object):
 		"""Given time t, and time interval, we calculate the wpm and ipm
 		"""
 		if time <= interval:
-			wpm=round(self.validAlphaNum[time-1]/time)
-			ipm=round(self.allInputNum[time-1]/time)
+			wpm=round(self.validAlphaNum[time-1]/(time/60))
+			ipm=round(self.allInputNum[time-1]/(time/60))
 		else:
-			wpm=round((self.validAlphaNum[time-1]-self.validAlphaNum[time-1-interval])/interval)
-			ipm=round((self.allInputNum[time-1]-self.allInputNum[time-1-interval])/interval)
+			wpm=round((self.validAlphaNum[time-1]-self.validAlphaNum[time-1-interval])/(interval/60))
+			ipm=round((self.allInputNum[time-1]-self.allInputNum[time-1-interval])/(interval/60))
 		
 		return wpm,ipm
 
