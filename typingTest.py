@@ -167,7 +167,8 @@ class Ui_MainWindow(object):
 
 		print(self.pushButton_3.isEnabled())
 		if self.pushButton_3.isEnabled():
-			self.humanRewardFeedback=0.5
+			self.humanRewardFeedback=0.2
+
 
 		self.activateButton()
 
@@ -223,15 +224,15 @@ class Ui_MainWindow(object):
 		self.inputNum+=1
 
 	def getNegativeReward(self):
-		self.humanRewardFeedback=-5
+		self.humanRewardFeedback=-0.5
 		self.disableButton()
 
 	def getNormalReward(self):
-		self.humanRewardFeedback=0
+		self.humanRewardFeedback=0.2
 		self.disableButton()
 
 	def getPositiveReward(self):
-		self.humanRewardFeedback=5
+		self.humanRewardFeedback=0.5
 		self.disableButton()
 
 	def retranslateUi(self, MainWindow):

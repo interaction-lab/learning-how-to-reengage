@@ -11,7 +11,7 @@ import numpy as np
 import operator
 import matplotlib.pyplot as plt
 import pygame as pg
-import sound
+# import sound
 # %matplotlib inline
 
 class GridWorld:
