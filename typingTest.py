@@ -167,11 +167,12 @@ class Ui_MainWindow(object):
 
 		print(self.pushButton_3.isEnabled())
 		if self.pushButton_3.isEnabled():
-			self.humanRewardFeedback=0
+			self.humanRewardFeedback=0.5
 
 		self.activateButton()
 
 		self.reward_record.append(reward)
+		print(self.humanRewardFeedback)
 		self.human_reward_record.append(self.humanRewardFeedback)
 		agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 
@@ -210,11 +211,11 @@ class Ui_MainWindow(object):
 		"""Given time t, and time interval, we calculate the wpm and ipm
 		"""
 		if time <= interval:
-			wpm=round(self.validAlphaNum[time-1]/time)
-			ipm=round(self.allInputNum[time-1]/time)
+			wpm=round(self.validAlphaNum[time-1]/(time/60))
+			ipm=round(self.allInputNum[time-1]/(time/60))
 		else:
-			wpm=round((self.validAlphaNum[time-1]-self.validAlphaNum[time-1-interval])/interval)
-			ipm=round((self.allInputNum[time-1]-self.allInputNum[time-1-interval])/interval)
+			wpm=round((self.validAlphaNum[time-1]-self.validAlphaNum[time-1-interval])/(interval/60))
+			ipm=round((self.allInputNum[time-1]-self.allInputNum[time-1-interval])/(interval/60))
 		
 		return wpm,ipm
 
@@ -235,7 +236,7 @@ class Ui_MainWindow(object):
 
 	def retranslateUi(self, MainWindow):
 		_translate = QtCore.QCoreApplication.translate
-		MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+		MainWindow.setWindowTitle(_translate("MainWindow", "Typing"))
 		self.pushButton.setText(_translate("MainWindow", "Start"))
 		self.pushButton_2.setText(_translate("MainWindow", "End"))
 
