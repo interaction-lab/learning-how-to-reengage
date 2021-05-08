@@ -46,10 +46,9 @@ class noise:
             self.wave = self.wave + chr(int(math.sin(x / ((self.Bitrate / freq/2) / math.pi)) * 127 + 128))
 
         self.stream.write(self.wave)
-        #self.stream.stop_stream()
-    # def playClick(self):
-    #     # playsound.playsound('click.mp3', True)
-    #     AudioPlayer("click.mp3").play(block=True)
+
+
+
 def playClickForSec(times = 1,lvl = 1):
         if lvl == 1:
             pygame.mixer.music.load("click_slow.mp3")

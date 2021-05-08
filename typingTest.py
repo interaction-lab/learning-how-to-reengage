@@ -138,7 +138,6 @@ class Ui_MainWindow(object):
 		print(new_text)
 
 		#Suppose after sleep(1), these two lists will append the number of 1,2,3,4,5 seconds.
-		#I mean this may not very accurate.
 		self.allInputNum.append(self.inputNum)
 		self.validAlphaNum.append(len(new_text))
 
@@ -168,7 +167,6 @@ class Ui_MainWindow(object):
 		print(self.pushButton_3.isEnabled())
 		if self.pushButton_3.isEnabled():
 			self.humanRewardFeedback=0.2
-
 
 		self.activateButton()
 
