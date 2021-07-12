@@ -11,3 +11,8 @@
 3. cd re-engagement-RL
 4. pip3 install -r requirements.txt
 ```
+
+### Running the current script
+```
+python3 typingTest.py
+```
