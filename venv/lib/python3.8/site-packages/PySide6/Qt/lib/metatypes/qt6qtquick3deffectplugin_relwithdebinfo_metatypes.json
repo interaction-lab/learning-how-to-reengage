@@ -1,0 +1,19 @@
+[
+    {
+        "classes": [
+            {
+                "className": "QtQuick3DEffectPlugin",
+                "object": true,
+                "qualifiedClassName": "QtQuick3DEffectPlugin",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQmlExtensionPlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "plugin.cpp",
+        "outputRevision": 68
+    }
+]

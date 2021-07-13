@@ -1,0 +1,534 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "GridGeometry"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "270"
+                    }
+                ],
+                "className": "GridGeometry",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "horizontalLines",
+                        "notify": "horizontalLinesChanged",
+                        "read": "horizontalLines",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setHorizontalLines"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "verticalLines",
+                        "notify": "verticalLinesChanged",
+                        "read": "verticalLines",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setVerticalLines"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "horizontalStep",
+                        "notify": "horizontalStepChanged",
+                        "read": "horizontalStep",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setHorizontalStep"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "verticalStep",
+                        "notify": "verticalStepChanged",
+                        "read": "verticalStep",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setVerticalStep"
+                    }
+                ],
+                "qualifiedClassName": "GridGeometry",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "horizontalLinesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "verticalLinesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "horizontalStepChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "verticalStepChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setHorizontalLines",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setVerticalLines",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "step",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setHorizontalStep",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "step",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setVerticalStep",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DGeometry"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "gridgeometry_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "InstanceRange"
+                    }
+                ],
+                "className": "QQuick3DInstanceRange",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "from",
+                        "notify": "fromChanged",
+                        "read": "from",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariant",
+                        "user": false,
+                        "write": "setFrom"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "to",
+                        "notify": "toChanged",
+                        "read": "to",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariant",
+                        "user": false,
+                        "write": "setTo"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "proportional",
+                        "notify": "proportionalChanged",
+                        "read": "proportional",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setProportional"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DInstanceRange",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "fromChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "toChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "proportionalChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "changed",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "from",
+                                "type": "QVariant"
+                            }
+                        ],
+                        "name": "setFrom",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "to",
+                                "type": "QVariant"
+                            }
+                        ],
+                        "name": "setTo",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "proportional",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setProportional",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "RandomInstancing"
+                    }
+                ],
+                "className": "QQuick3DRandomInstancing",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "instanceCount",
+                        "notify": "instanceCountChanged",
+                        "read": "instanceCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setInstanceCount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "position",
+                        "notify": "positionChanged",
+                        "read": "position",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstanceRange*",
+                        "user": false,
+                        "write": "setPosition"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "scale",
+                        "notify": "scaleChanged",
+                        "read": "scale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstanceRange*",
+                        "user": false,
+                        "write": "setScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "rotation",
+                        "notify": "rotationChanged",
+                        "read": "rotation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstanceRange*",
+                        "user": false,
+                        "write": "setRotation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "color",
+                        "notify": "colorChanged",
+                        "read": "color",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstanceRange*",
+                        "user": false,
+                        "write": "setColor"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "customData",
+                        "notify": "customDataChanged",
+                        "read": "customData",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstanceRange*",
+                        "user": false,
+                        "write": "setCustomData"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "randomSeed",
+                        "notify": "randomSeedChanged",
+                        "read": "randomSeed",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setRandomSeed"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DRandomInstancing",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "instanceCountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "randomSeedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "positionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "scaleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "rotationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "colorChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "customDataChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "instanceCount",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setInstanceCount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "randomSeed",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setRandomSeed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "position",
+                                "type": "QQuick3DInstanceRange*"
+                            }
+                        ],
+                        "name": "setPosition",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "scale",
+                                "type": "QQuick3DInstanceRange*"
+                            }
+                        ],
+                        "name": "setScale",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "rotation",
+                                "type": "QQuick3DInstanceRange*"
+                            }
+                        ],
+                        "name": "setRotation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "color",
+                                "type": "QQuick3DInstanceRange*"
+                            }
+                        ],
+                        "name": "setColor",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "customData",
+                                "type": "QQuick3DInstanceRange*"
+                            }
+                        ],
+                        "name": "setCustomData",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "name": "handleChange",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DInstancing"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "randominstancing_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "QtQuick3DHelpersPlugin",
+                "object": true,
+                "qualifiedClassName": "QtQuick3DHelpersPlugin",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQmlEngineExtensionPlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "plugin.cpp",
+        "outputRevision": 68
+    }
+]

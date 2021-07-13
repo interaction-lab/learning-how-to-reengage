@@ -1,0 +1,383 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    },
+                    {
+                        "name": "QML.Foreign",
+                        "value": "QScxmlEvent"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1288"
+                    }
+                ],
+                "className": "QScxmlEventForeign",
+                "gadget": true,
+                "qualifiedClassName": "QScxmlEventForeign"
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "EventConnection"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1288"
+                    }
+                ],
+                "className": "QScxmlEventConnection",
+                "interfaces": [
+                    [
+                        {
+                            "className": "QQmlParserStatus",
+                            "id": "\"org.qt-project.Qt.QQmlParserStatus\""
+                        }
+                    ]
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "events",
+                        "notify": "eventsChanged",
+                        "read": "events",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "write": "setEvents"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "stateMachine",
+                        "notify": "stateMachineChanged",
+                        "read": "stateMachine",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QScxmlStateMachine*",
+                        "user": false,
+                        "write": "setStateMachine"
+                    }
+                ],
+                "qualifiedClassName": "QScxmlEventConnection",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "eventsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "stateMachineChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "event",
+                                "type": "QScxmlEvent"
+                            }
+                        ],
+                        "name": "occurred",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QQmlParserStatus"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "eventconnection_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "DefaultProperty",
+                        "value": "qmlChildren"
+                    },
+                    {
+                        "name": "QML.Element",
+                        "value": "InvokedServices"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1288"
+                    }
+                ],
+                "className": "QScxmlInvokedServices",
+                "interfaces": [
+                    [
+                        {
+                            "className": "QQmlParserStatus",
+                            "id": "\"org.qt-project.Qt.QQmlParserStatus\""
+                        }
+                    ]
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "stateMachine",
+                        "notify": "stateMachineChanged",
+                        "read": "stateMachine",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QScxmlStateMachine*",
+                        "user": false,
+                        "write": "setStateMachine"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "children",
+                        "notify": "childrenChanged",
+                        "read": "children",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantMap",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "qmlChildren",
+                        "read": "qmlChildren",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<QObject>",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QScxmlInvokedServices",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "childrenChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "stateMachineChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QQmlParserStatus"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "invokedservices_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "DefaultProperty",
+                        "value": "children"
+                    }
+                ],
+                "className": "QScxmlStateMachineExtended",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "children",
+                        "read": "children",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<QObject>",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QScxmlStateMachineExtended",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "Only created through derived types"
+                    },
+                    {
+                        "name": "QML.Element",
+                        "value": "StateMachine"
+                    },
+                    {
+                        "name": "QML.Foreign",
+                        "value": "QScxmlStateMachine"
+                    },
+                    {
+                        "name": "QML.Extended",
+                        "value": "QScxmlStateMachineExtended"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1288"
+                    }
+                ],
+                "className": "QScxmlStateMachineForeign",
+                "gadget": true,
+                "qualifiedClassName": "QScxmlStateMachineForeign"
+            }
+        ],
+        "inputFile": "statemachineextended_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "StateMachineLoader"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1288"
+                    }
+                ],
+                "className": "QScxmlStateMachineLoader",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "source",
+                        "notify": "sourceChanged",
+                        "read": "source",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QUrl",
+                        "user": false,
+                        "write": "setSource"
+                    },
+                    {
+                        "constant": false,
+                        "designable": false,
+                        "final": false,
+                        "name": "stateMachine",
+                        "notify": "stateMachineChanged",
+                        "read": "stateMachine",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QScxmlStateMachine*",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "initialValues",
+                        "notify": "initialValuesChanged",
+                        "read": "initialValues",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantMap",
+                        "user": false,
+                        "write": "setInitialValues"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "dataModel",
+                        "notify": "dataModelChanged",
+                        "read": "dataModel",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QScxmlDataModel*",
+                        "user": false,
+                        "write": "setDataModel"
+                    }
+                ],
+                "qualifiedClassName": "QScxmlStateMachineLoader",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "sourceChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "initialValuesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "stateMachineChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "dataModelChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "statemachineloader_p.h",
+        "outputRevision": 68
+    }
+]

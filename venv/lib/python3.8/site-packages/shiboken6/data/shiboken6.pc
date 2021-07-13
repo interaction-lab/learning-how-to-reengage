@@ -1,0 +1,13 @@
+prefix=/Users/qt/work/pyside/pyside-setup/pyside3a_install/py3.7-qt6.1.2-64bit-release
+exec_prefix=/Users/qt/work/pyside/pyside-setup/pyside3a_install/py3.7-qt6.1.2-64bit-release
+libdir=lib
+includedir=/Users/qt/work/pyside/pyside-setup/pyside3a_install/py3.7-qt6.1.2-64bit-release/include/shiboken6
+generator_location=/Users/qt/work/pyside/pyside-setup/pyside3a_install/py3.7-qt6.1.2-64bit-release/bin/shiboken6
+python_interpreter=/Users/qt/work/pyside/pyside-setup/env3/bin/python
+python_include_dir=/Library/Frameworks/Python.framework/Versions/3.7/include/python3.7m
+
+Name: shiboken6
+Description: Support library for Python bindings created with the Shiboken6 generator.
+Version: 6.1.2
+Libs:  -L${libdir} -lshiboken6.abi3
+Cflags: -I/Library/Frameworks/Python.framework/Versions/3.7/include/python3.7m -I${includedir}/

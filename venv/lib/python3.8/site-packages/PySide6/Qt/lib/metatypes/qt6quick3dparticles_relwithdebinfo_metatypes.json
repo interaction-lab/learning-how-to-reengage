@@ -1,0 +1,3184 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Particle3D"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "Particle3D is abstract"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticle",
+                "enums": [
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "FadeType",
+                        "values": [
+                            "FadeNone",
+                            "FadeOpacity",
+                            "FadeScale"
+                        ]
+                    },
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "AlignMode",
+                        "values": [
+                            "AlignNone",
+                            "AlignTowardsTarget",
+                            "AlignTowardsStartVelocity"
+                        ]
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "system",
+                        "notify": "systemChanged",
+                        "read": "system",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleSystem*",
+                        "user": false,
+                        "write": "setSystem"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "maxAmount",
+                        "notify": "maxAmountChanged",
+                        "read": "maxAmount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setMaxAmount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "color",
+                        "notify": "colorChanged",
+                        "read": "color",
+                        "required": false,
+                        "reset": "resetColor()",
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false,
+                        "write": "setColor"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "colorVariation",
+                        "notify": "colorVariationChanged",
+                        "read": "colorVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector4D",
+                        "user": false,
+                        "write": "setColorVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "unifiedColorVariation",
+                        "notify": "unifiedColorVariationChanged",
+                        "read": "unifiedColorVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setUnifiedColorVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "fadeInEffect",
+                        "notify": "fadeInEffectChanged",
+                        "read": "fadeInEffect",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "FadeType",
+                        "user": false,
+                        "write": "setFadeInEffect"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "fadeOutEffect",
+                        "notify": "fadeOutEffectChanged",
+                        "read": "fadeOutEffect",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "FadeType",
+                        "user": false,
+                        "write": "setFadeOutEffect"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "fadeInDuration",
+                        "notify": "fadeInDurationChanged",
+                        "read": "fadeInDuration",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setFadeInDuration"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "fadeOutDuration",
+                        "notify": "fadeOutDurationChanged",
+                        "read": "fadeOutDuration",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setFadeOutDuration"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "alignMode",
+                        "notify": "alignModeChanged",
+                        "read": "alignMode",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "AlignMode",
+                        "user": false,
+                        "write": "setAlignMode"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "alignTargetPosition",
+                        "notify": "alignTargetPositionChanged",
+                        "read": "alignTargetPosition",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setAlignTargetPosition"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticle",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "systemChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "maxAmountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "colorChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "colorVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "unifiedColorVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "fadeInEffectChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "fadeOutEffectChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "fadeInDurationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "fadeOutDurationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "alignModeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "alignTargetPositionChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "system",
+                                "type": "QQuick3DParticleSystem*"
+                            }
+                        ],
+                        "name": "setSystem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "maxAmount",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setMaxAmount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "color",
+                                "type": "QColor"
+                            }
+                        ],
+                        "name": "setColor",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "colorVariation",
+                                "type": "QVector4D"
+                            }
+                        ],
+                        "name": "setColorVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "unified",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setUnifiedColorVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "fadeInEffect",
+                                "type": "QQuick3DParticle::FadeType"
+                            }
+                        ],
+                        "name": "setFadeInEffect",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "fadeOutEffect",
+                                "type": "QQuick3DParticle::FadeType"
+                            }
+                        ],
+                        "name": "setFadeOutEffect",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "fadeInDuration",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setFadeInDuration",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "fadeOutDuration",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setFadeOutDuration",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "alignMode",
+                                "type": "AlignMode"
+                            }
+                        ],
+                        "name": "setAlignMode",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "alignPosition",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setAlignTargetPosition",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticle_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Affector3D"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "Affector3D is abstract"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleAffector",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "system",
+                        "notify": "systemChanged",
+                        "read": "system",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleSystem*",
+                        "user": false,
+                        "write": "setSystem"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particles",
+                        "read": "particles",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<QQuick3DParticle>",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "enabled",
+                        "notify": "enabledChanged",
+                        "read": "enabled",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setEnabled"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleAffector",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "update",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "systemChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "enabledChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "system",
+                                "type": "QQuick3DParticleSystem*"
+                            }
+                        ],
+                        "name": "setSystem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enabled",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setEnabled",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticleaffector_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Attractor3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleAttractor",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "positionVariation",
+                        "notify": "positionVariationChanged",
+                        "read": "positionVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setPositionVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "shape",
+                        "notify": "shapeChanged",
+                        "read": "shape",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleShape*",
+                        "user": false,
+                        "write": "setShape"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "duration",
+                        "notify": "durationChanged",
+                        "read": "duration",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setDuration"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "durationVariation",
+                        "notify": "durationVariationChanged",
+                        "read": "durationVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setDurationVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "hideAtEnd",
+                        "notify": "hideAtEndChanged",
+                        "read": "hideAtEnd",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setHideAtEnd"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleAttractor",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "positionVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "shapeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "durationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "durationVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "hideAtEndChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "positionVariation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setPositionVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "shape",
+                                "type": "QQuick3DParticleShape*"
+                            }
+                        ],
+                        "name": "setShape",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "duration",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setDuration",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "durationVariation",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setDurationVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "hideAtEnd",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setHideAtEnd",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleAffector"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticleattractor_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleDirection",
+                "object": true,
+                "qualifiedClassName": "QQuick3DParticleDirection",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticledirection_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "EmitBurst3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleEmitBurst",
+                "interfaces": [
+                    [
+                        {
+                            "className": "QQmlParserStatus",
+                            "id": "\"org.qt-project.Qt.QQmlParserStatus\""
+                        }
+                    ]
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "time",
+                        "notify": "timeChanged",
+                        "read": "time",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setTime"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "amount",
+                        "notify": "amountChanged",
+                        "read": "amount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setAmount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "duration",
+                        "notify": "durationChanged",
+                        "read": "duration",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setDuration"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleEmitBurst",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "timeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "amountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "durationChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "time",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setTime",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "amount",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setAmount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "duration",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setDuration",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QQmlParserStatus"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticleemitburst_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "ParticleEmitter3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleEmitter",
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "burst",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            },
+                            {
+                                "name": "duration",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "burst",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            },
+                            {
+                                "name": "duration",
+                                "type": "int"
+                            },
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "burst",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "system",
+                        "notify": "systemChanged",
+                        "read": "system",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleSystem*",
+                        "user": false,
+                        "write": "setSystem"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "emitBursts",
+                        "read": "emitBursts",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<QQuick3DParticleEmitBurst>",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "velocity",
+                        "notify": "velocityChanged",
+                        "read": "velocity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleDirection*",
+                        "user": false,
+                        "write": "setVelocity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particle",
+                        "notify": "particleChanged",
+                        "read": "particle",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticle*",
+                        "user": false,
+                        "write": "setParticle"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "enabled",
+                        "notify": "enabledChanged",
+                        "read": "enabled",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setEnabled"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "shape",
+                        "notify": "shapeChanged",
+                        "read": "shape",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleShape*",
+                        "user": false,
+                        "write": "setShape"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "emitRate",
+                        "notify": "emitRateChanged",
+                        "read": "emitRate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setEmitRate"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "lifeSpan",
+                        "notify": "lifeSpanChanged",
+                        "read": "lifeSpan",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setLifeSpan"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "lifeSpanVariation",
+                        "notify": "lifeSpanVariationChanged",
+                        "read": "lifeSpanVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setLifeSpanVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleScale",
+                        "notify": "particleScaleChanged",
+                        "read": "particleScale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setParticleScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleEndScale",
+                        "notify": "particleEndScaleChanged",
+                        "read": "particleEndScale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setParticleEndScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleScaleVariation",
+                        "notify": "particleScaleVariationChanged",
+                        "read": "particleScaleVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setParticleScaleVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleRotation",
+                        "notify": "particleRotationChanged",
+                        "read": "particleRotation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setParticleRotation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleRotationVariation",
+                        "notify": "particleRotationVariationChanged",
+                        "read": "particleRotationVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setParticleRotationVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleRotationVelocity",
+                        "notify": "particleRotationVelocityChanged",
+                        "read": "particleRotationVelocity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setParticleRotationVelocity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleRotationVelocityVariation",
+                        "notify": "particleRotationVariationVelocityChanged",
+                        "read": "particleRotationVelocityVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setParticleRotationVelocityVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "depthBias",
+                        "notify": "depthBiasChanged",
+                        "read": "depthBias",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDepthBias"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleEmitter",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "velocityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "systemChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "emitRateChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleScaleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleEndScaleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleScaleVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "lifeSpanChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "lifeSpanVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "shapeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleRotationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleRotationVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleRotationVelocityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleRotationVariationVelocityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "enabledChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "depthBiasChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enabled",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setEnabled",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "velocity",
+                                "type": "QQuick3DParticleDirection*"
+                            }
+                        ],
+                        "name": "setVelocity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "system",
+                                "type": "QQuick3DParticleSystem*"
+                            }
+                        ],
+                        "name": "setSystem",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "emitRate",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setEmitRate",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleScale",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setParticleScale",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleEndScale",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setParticleEndScale",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleScaleVariation",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setParticleScaleVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "lifeSpan",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setLifeSpan",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "lifeSpanVariation",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setLifeSpanVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particle",
+                                "type": "QQuick3DParticle*"
+                            }
+                        ],
+                        "name": "setParticle",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "shape",
+                                "type": "QQuick3DParticleShape*"
+                            }
+                        ],
+                        "name": "setShape",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleRotation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setParticleRotation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleRotationVariation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setParticleRotationVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleRotationVelocity",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setParticleRotationVelocity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "particleRotationVelocityVariation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setParticleRotationVelocityVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "bias",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setDepthBias",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticleemitter_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    },
+                    {
+                        "name": "QML.Foreign",
+                        "value": "QQuick3DNode"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DNodeForeign",
+                "gadget": true,
+                "qualifiedClassName": "QQuick3DNodeForeign"
+            }
+        ],
+        "inputFile": "qquick3dparticleforeign_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Gravity3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleGravity",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "magnitude",
+                        "notify": "magnitudeChanged",
+                        "read": "magnitude",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMagnitude"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "direction",
+                        "notify": "directionChanged",
+                        "read": "direction",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setDirection"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleGravity",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "magnitudeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "directionChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "direction",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setDirection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "magnitude",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMagnitude",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleAffector"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlegravity_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "ModelParticle3D"
+                    },
+                    {
+                        "name": "DefaultProperty",
+                        "value": "delegate"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleModelParticle",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "delegate",
+                        "notify": "delegateChanged",
+                        "read": "delegate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlComponent*",
+                        "user": false,
+                        "write": "setDelegate"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "instanceTable",
+                        "notify": "instanceTableChanged",
+                        "read": "instanceTable",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DInstancing*",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleModelParticle",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "delegateChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "instanceTableChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "delegate",
+                                "type": "QQmlComponent*"
+                            }
+                        ],
+                        "name": "setDelegate",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticle"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlemodelparticle_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PointRotator3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticlePointRotator",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "magnitude",
+                        "notify": "magnitudeChanged",
+                        "read": "magnitude",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMagnitude"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "direction",
+                        "notify": "directionChanged",
+                        "read": "direction",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setDirection"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "pivotPoint",
+                        "notify": "pivotPointChanged",
+                        "read": "pivotPoint",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setPivotPoint"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticlePointRotator",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "magnitudeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "directionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "pivotPointChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "magnitude",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMagnitude",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "direction",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setDirection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "point",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setPivotPoint",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleAffector"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlepointrotator_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "ParticleShape3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleShape",
+                "enums": [
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "ShapeType",
+                        "values": [
+                            "Cube",
+                            "Sphere",
+                            "Cylinder"
+                        ]
+                    }
+                ],
+                "interfaces": [
+                    [
+                        {
+                            "className": "QQmlParserStatus",
+                            "id": "\"org.qt-project.Qt.QQmlParserStatus\""
+                        }
+                    ]
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "fill",
+                        "notify": "fillChanged",
+                        "read": "fill",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setFill"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "type",
+                        "notify": "typeChanged",
+                        "read": "type",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "ShapeType",
+                        "user": false,
+                        "write": "setType"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "extents",
+                        "notify": "extentsChanged",
+                        "read": "extents",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setExtents"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "fillChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "typeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "extentsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "fill",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setFill",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "type",
+                                "type": "QQuick3DParticleShape::ShapeType"
+                            }
+                        ],
+                        "name": "setType",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "extends",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setExtents",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QQmlParserStatus"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticleshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "SpriteParticle3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleSpriteParticle",
+                "enums": [
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "BlendMode",
+                        "values": [
+                            "SourceOver",
+                            "Screen",
+                            "Multiply"
+                        ]
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "blendMode",
+                        "notify": "blendModeChanged",
+                        "read": "blendMode",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "BlendMode",
+                        "user": false,
+                        "write": "setBlendMode"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "sprite",
+                        "notify": "spriteChanged",
+                        "read": "sprite",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DTexture*",
+                        "user": false,
+                        "write": "setSprite"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "frameCount",
+                        "notify": "frameCountChanged",
+                        "read": "frameCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setFrameCount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "interpolate",
+                        "notify": "interpolateChanged",
+                        "read": "interpolate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setInterpolate"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "billboard",
+                        "notify": "billboardChanged",
+                        "read": "billboard",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setBillboard"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particleScale",
+                        "notify": "particleScaleChanged",
+                        "read": "particleScale",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setParticleScale"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "colorTable",
+                        "notify": "colorTableChanged",
+                        "read": "colorTable",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DTexture*",
+                        "user": false,
+                        "write": "setColorTable"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleSpriteParticle",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "blendModeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "spriteChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "frameCountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "interpolateChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "billboardChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particleScaleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "colorTableChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "blendMode",
+                                "type": "QQuick3DParticleSpriteParticle::BlendMode"
+                            }
+                        ],
+                        "name": "setBlendMode",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "sprite",
+                                "type": "QQuick3DTexture*"
+                            }
+                        ],
+                        "name": "setSprite",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "frameCount",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setFrameCount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "interpolate",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setInterpolate",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "billboard",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setBillboard",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "scale",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setParticleScale",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "colorTable",
+                                "type": "QQuick3DTexture*"
+                            }
+                        ],
+                        "name": "setColorTable",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticle"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlespriteparticle_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "ParticleSystem3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleSystem",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "running",
+                        "notify": "runningChanged",
+                        "read": "isRunning",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setRunning"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "paused",
+                        "notify": "pausedChanged",
+                        "read": "isPaused",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setPaused"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "startTime",
+                        "notify": "startTimeChanged",
+                        "read": "startTime",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setStartTime"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "time",
+                        "notify": "timeChanged",
+                        "read": "time",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setTime"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "useRandomSeed",
+                        "notify": "useRandomSeedChanged",
+                        "read": "useRandomSeed",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setUseRandomSeed"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "seed",
+                        "notify": "seedChanged",
+                        "read": "seed",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setSeed"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "logging",
+                        "notify": "loggingChanged",
+                        "read": "logging",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setLogging"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "loggingData",
+                        "notify": "loggingDataChanged",
+                        "read": "loggingData",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticleSystemLogging*",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleSystem",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "runningChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "pausedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "timeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "startTimeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "useRandomSeedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "seedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "loggingChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "loggingDataChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "running",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setRunning",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "paused",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setPaused",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "startTime",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setStartTime",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "time",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setTime",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "randomize",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setUseRandomSeed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "seed",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setSeed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "logging",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setLogging",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DNode"
+                    }
+                ]
+            },
+            {
+                "className": "QQuick3DParticleSystemAnimation",
+                "object": true,
+                "qualifiedClassName": "QQuick3DParticleSystemAnimation",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractAnimation"
+                    }
+                ]
+            },
+            {
+                "className": "QQuick3DParticleSystemUpdate",
+                "object": true,
+                "qualifiedClassName": "QQuick3DParticleSystemUpdate",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractAnimation"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlesystem_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleSystemLogging",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "loggingInterval",
+                        "notify": "loggingIntervalChanged",
+                        "read": "loggingInterval",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setLoggingInterval"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "updates",
+                        "notify": "updatesChanged",
+                        "read": "updates",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particlesMax",
+                        "notify": "particlesMaxChanged",
+                        "read": "particlesMax",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "particlesUsed",
+                        "notify": "particlesUsedChanged",
+                        "read": "particlesUsed",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "time",
+                        "notify": "timeChanged",
+                        "read": "time",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "timeAverage",
+                        "notify": "timeAverageChanged",
+                        "read": "timeAverage",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleSystemLogging",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "loggingIntervalChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "updatesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particlesMaxChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "particlesUsedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "timeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "timeAverageChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "interval",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setLoggingInterval",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlesystemlogging_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TargetDirection3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleTargetDirection",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "position",
+                        "notify": "positionChanged",
+                        "read": "position",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setPosition"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "positionVariation",
+                        "notify": "positionVariationChanged",
+                        "read": "positionVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setPositionVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "normalized",
+                        "notify": "normalizedChanged",
+                        "read": "normalized",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setNormalized"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "magnitude",
+                        "notify": "magnitudeChanged",
+                        "read": "magnitude",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMagnitude"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "magnitudeVariation",
+                        "notify": "magnitudeChangedVariation",
+                        "read": "magnitudeVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMagnitudeVariation"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleTargetDirection",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "positionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "positionVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "normalizedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "magnitudeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "magnitudeChangedVariation",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "name": "positionVariation",
+                        "returnType": "QVector3D"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "positionVariation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setPositionVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "normalized",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setNormalized",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "magnitude",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMagnitude",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "magnitudeVariation",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMagnitudeVariation",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleDirection"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticletargetdirection_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TrailEmitter3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleTrailEmitter",
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "burst",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "follow",
+                        "notify": "followChanged",
+                        "read": "follow",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DParticle*",
+                        "user": false,
+                        "write": "setFollow"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleTrailEmitter",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "followChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "follow",
+                                "type": "QQuick3DParticle*"
+                            }
+                        ],
+                        "name": "setFollow",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleEmitter"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticletrailemitter_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "VectorDirection3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleVectorDirection",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "direction",
+                        "notify": "directionChanged",
+                        "read": "direction",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setDirection"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "directionVariation",
+                        "notify": "directionVariationChanged",
+                        "read": "directionVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setDirectionVariation"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleVectorDirection",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "directionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "directionVariationChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "direction",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setDirection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "directionVariation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setDirectionVariation",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleDirection"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlevectordirection_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "Wander3D"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "1537"
+                    }
+                ],
+                "className": "QQuick3DParticleWander",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "globalAmount",
+                        "notify": "globalAmountChanged",
+                        "read": "globalAmount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setGlobalAmount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "globalPace",
+                        "notify": "globalPaceChanged",
+                        "read": "globalPace",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setGlobalPace"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "globalPaceStart",
+                        "notify": "globalPaceStartChanged",
+                        "read": "globalPaceStart",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setGlobalPaceStart"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "uniqueAmount",
+                        "notify": "uniqueAmountChanged",
+                        "read": "uniqueAmount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setUniqueAmount"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "uniquePace",
+                        "notify": "uniquePaceChanged",
+                        "read": "uniquePace",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setUniquePace"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "uniqueAmountVariation",
+                        "notify": "uniqueAmountVariationChanged",
+                        "read": "uniqueAmountVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setUniqueAmountVariation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "uniquePaceVariation",
+                        "notify": "uniquePaceVariationChanged",
+                        "read": "uniquePaceVariation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setUniquePaceVariation"
+                    }
+                ],
+                "qualifiedClassName": "QQuick3DParticleWander",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "globalAmountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "globalPaceChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "globalPaceStartChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "uniqueAmountChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "uniquePaceChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "uniqueAmountVariationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "uniquePaceVariationChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "globalAmount",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setGlobalAmount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "globalPace",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setGlobalPace",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "globalPaceStart",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setGlobalPaceStart",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "uniqueAmount",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setUniqueAmount",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "uniquePace",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setUniquePace",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "uniqueAmountVariation",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setUniqueAmountVariation",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "uniquePaceVariation",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setUniquePaceVariation",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DParticleAffector"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquick3dparticlewander_p.h",
+        "outputRevision": 68
+    }
+]
