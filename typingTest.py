@@ -8,7 +8,18 @@ import pygame as pg
 import pandas as pd
 import sys
 
+""" Sets up UI Window, starts the typing test, calculates WPM and IPM. """
 class Ui_MainWindow(object):
+
+    """ @param hasStarted: True if 'Start' button has been pushed. """
+    hasStarted = False
+
+    """   
+    Sets up Typing UI with widgets and fonts.
+    @param self: Ui_MainWindow instance.
+    @param MainWindow: MainWindow object.
+    @return: None.   
+    """
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(692, 477)
@@ -67,9 +78,9 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
         self.retranslateUi(MainWindow)
         self.pushButton.clicked.connect(self.startTest)
+
         # self.pushButton_2.clicked.connect(self.resetTest)
         # self.pushButton_3.clicked.connect(self.getNegativeReward)
         # self.pushButton_4.clicked.connect(self.getNormalReward)
@@ -97,32 +108,40 @@ class Ui_MainWindow(object):
 
         self.log = []
 
+    """ Starts the typing test if not already started. """
     def startTest(self):
-        self.allInputNum = []
-        self.validAlphaNum = []
-        self.textEdit.setPlaceholderText("")
-        self.textEdit.setDisabled(False)
-        self.recordWork.start()
-        self.qlearningWork.start()
-        self.environment = environment.GridWorld()
-        self.agentQ = agent.Q_Agent(self.environment)
-        self.update_call = functools.partial(self.updateInfo, environment=self.environment, agent=self.agentQ)
-        pg.mixer.init()
-        self.recordWork.recordTrigger.connect(self.recordInputInfo)
-        self.qlearningWork.qlearningTrigger.connect(self.update_call)
 
-        # Start timer
-        self.startTime = time.time()
+        if not self.hasStarted:
 
-    def resetTest(self):
-        self.allInputNum = []
-        self.validAlphaNum = []
-        self.inputNum = 0
-        self.textEdit.setPlainText("")
-        self.textEdit.setDisabled(True)
-        self.label.setText("WPM:-")
-        self.label_2.setText("IPM:-")
+            """Keeps a second by second record of the Input Num"""
+            self.allInputNum = []
+            "Keeps a second by second record of the Total Number of Words Typed. "
+            self.validAlphaNum = []
+            self.textEdit.setPlaceholderText("")
+            self.textEdit.setDisabled(False)
+            self.recordWork.start()
+            self.qlearningWork.start()
+            self.environment = environment.GridWorld()
+            self.agentQ = agent.Q_Agent(self.environment)
+            self.update_call = functools.partial(self.updateInfo, environment=self.environment, agent=self.agentQ)
+            pg.mixer.init()
+            self.recordWork.recordTrigger.connect(self.recordInputInfo)
+            self.qlearningWork.qlearningTrigger.connect(self.update_call)
 
+            # Start timer
+            self.startTime = time.time()
+            self.hasStarted = True
+
+    # def resetTest(self):
+    #     self.allInputNum = []
+    #     self.validAlphaNum = []
+    #     self.inputNum = 0
+    #     self.textEdit.setPlainText("")
+    #     self.textEdit.setDisabled(True)
+    #     self.label.setText("WPM:-")
+    #     self.label_2.setText("IPM:-")
+
+    """ Records WPM and IPM and adds them to the CSV. Displays WPM and IPM on screen. """
     def recordInputInfo(self):
         # Just keep characters from textEdit
         text = self.textEdit.toPlainText()
@@ -144,10 +163,10 @@ class Ui_MainWindow(object):
 
         self.log.append((timeIs, wpm, ipm))
 
+    """Given time t, and time interval, we calculate the wpm and ipm.
+            WPM (characters per minute) is calculated by taking the number of characters typed in the last
+            ~interval~ seconds and multiplying it by the corresponding constant."""
     def getWPMandIPM(self, time, interval):
-        """Given time t, and time interval, we calculate the wpm and ipm.
-        WPM (characters per minute) is calculated by taking the number of characters typed in the last
-        ~interval~ seconds and multiplying it by the corresponding constant."""
 
         if time <= interval:
             wpm = round((self.validAlphaNum[time - 1] - 183) / (time / 60))
@@ -158,25 +177,18 @@ class Ui_MainWindow(object):
 
         return wpm, ipm
 
+    """ Not relevant for typing test. """
     def updateInfo(self, environment, agent):
         # get old state
         old_state = self.environment.current_location
-
         old_action = self.action
-
         self.environment.current_location = self.getCurrentLocation()
-
         self.action = agent.choose_action(self.environment.actions)
-
         reward = self.environment.make_step(self.action)
-
         # if self.pushButton_3.isEnabled():
             # self.humanRewardFeedback = 0.2
-
         # self.activateButton()
-
         self.reward_record.append(reward)
-
         self.human_reward_record.append(self.humanRewardFeedback)
         agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 
@@ -196,6 +208,7 @@ class Ui_MainWindow(object):
         # self.pushButton_4.setStyleSheet("border:none; background-color: gray")
         # self.pushButton_5.setStyleSheet("border:none; background-color: gray")
 
+    """ Not relevant for typing test. """
     def getCurrentLocation(self):
         if self.wpm <= 2:
             new_state = (0, 0)
@@ -265,6 +278,7 @@ class QLearningWorkThread(QThread):
             time.sleep(5)
             self.qlearningTrigger.emit(str(1))
 
+""" Run this code to run the typing test."""
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
