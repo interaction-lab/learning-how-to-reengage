@@ -14,6 +14,9 @@ class Ui_MainWindow(object):
     """ @param hasStarted: True if 'Start' button has been pushed. """
     hasStarted = False
 
+    def __init__(self):
+        self.prompt = "It’s college application time! Here were some of the Stanford Essay Prompts from last year.  Choose one and write away! \n \nA. What is the most significant challenge that society faces today? \nB.How did you spend your last two summers?\n"
+        self.promptLength = len(''.join( list(filter( str.isalpha, self.prompt))))
     """   
     Sets up Typing UI with widgets and fonts.
     @param self: Ui_MainWindow instance.
@@ -73,7 +76,10 @@ class Ui_MainWindow(object):
         self.recordWork = RecordWorkThread()  # Work Thread
         self.qlearningWork = QLearningWorkThread()
         self.startTime = None
-        self.inputNum = 0  # All keyboard inputNum
+
+        # All keyboard inputNum
+        self.inputNum = 0
+
         self.inputNumLast = 0
         self.wpm = None  # Word per minute
         self.ipm = None  # Input per minute
@@ -85,13 +91,13 @@ class Ui_MainWindow(object):
         self.human_reward_record = []
         self.humanRewardFeedback = 0
 
+        # Keeps track of timeIS, wpm, ipm to record to CSV.
         self.log = []
 
     """ Starts the typing test if not already started. """
     def startTest(self):
 
         if not self.hasStarted:
-
             """Keeps a second by second record of the Input Num"""
             self.allInputNum = []
             "Keeps a second by second record of the Total Number of Words Typed. "
@@ -111,18 +117,33 @@ class Ui_MainWindow(object):
             self.startTime = time.time()
             self.hasStarted = True
 
+    # UI Window Text
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle( _translate( "MainWindow", "Typing" ) )
+        self.pushButton.setText( _translate( "MainWindow", "Start" ) )
+
+        self.label.setText( _translate( "MainWindow", "WPM:-" ) )
+        self.label_2.setText( _translate( "MainWindow", "IPM:-" ) )
+
+        self.textEdit.setText(self.prompt)
+
     """ Records WPM and IPM and adds them to the CSV. Displays WPM and IPM on screen. """
     def recordInputInfo(self):
         # Just keep characters from textEdit
         text = self.textEdit.toPlainText()
-        temp = filter(str.isalpha, text)
-        new_text = ''.join(list(temp))      # total amount of text
 
-        # Suppose after sleep(1), these two lists will append the number of 1,2,3,4,5 seconds.
+        # total text
+        new_text = ''.join(list(filter(str.isalpha, text)))
+
         self.allInputNum.append(self.inputNum)
-        self.validAlphaNum.append(len(new_text))
+        self.validAlphaNum.append(len(new_text) - self.promptLength)
+        print(self.validAlphaNum)
 
-        timeIs = len(self.allInputNum)          # Number of seconds that program has been running.
+        # Number of seconds that program has been running.
+        timeIs = len(self.allInputNum)
+
+        # Calculates wpm and ipm.
         wpm, ipm = self.getWPMandIPM(timeIs, 5)
 
         self.label.setText("WPM:" + str(wpm))
@@ -137,14 +158,12 @@ class Ui_MainWindow(object):
             WPM (characters per minute) is calculated by taking the number of characters typed in the last
             ~interval~ seconds and multiplying it by the corresponding constant."""
     def getWPMandIPM(self, time, interval):
-
         if time <= interval:
-            wpm = round((self.validAlphaNum[time - 1] - 183) / (time / 60))
+            wpm = round((self.validAlphaNum[time - 1]) / (time / 60))
             ipm = round(self.allInputNum[time - 1] / (time / 60))
         else:
             wpm = round((self.validAlphaNum[time - 1] - self.validAlphaNum[time - 1 - interval]) / (interval / 60))
             ipm = round((self.allInputNum[time - 1] - self.allInputNum[time - 1 - interval]) / (interval / 60))
-
         return wpm, ipm
 
     """ Not relevant for typing test. """
@@ -187,17 +206,6 @@ class Ui_MainWindow(object):
     def getPositiveReward(self):
         self.humanRewardFeedback = 0.5
         self.disableButton()
-
-    # UI Window Text
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Typing"))
-        self.pushButton.setText(_translate("MainWindow", "Start"))
-
-        self.label.setText(_translate("MainWindow", "WPM:-"))
-        self.label_2.setText(_translate("MainWindow", "IPM:-"))
-
-        self.textEdit.setText("It’s college application time! Here were some of the Stanford Essay Prompts from last year.  Choose one and write away! \n \nA. What is the most significant challenge that society faces today? \nB.How did you spend your last two summers?\n")
 
 # For recording input info once per second
 class RecordWorkThread(QThread):
