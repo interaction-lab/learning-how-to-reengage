@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
             self.qlearningWork.start()
             self.environment = environment.GridWorld()
             self.agentQ = agent.Q_Agent(self.environment)
-            self.update_call = functools.partial(self.updateInfo, environment=self.environment, agent=self.agentQ)
+            self.update_call = functools.partial(self.updateInfo, agent=self.agentQ)
             pg.mixer.init()
             self.recordWork.recordTrigger.connect(self.recordInputInfo)
             self.qlearningWork.qlearningTrigger.connect(self.update_call)
@@ -130,15 +130,12 @@ class Ui_MainWindow(object):
 
     """ Records WPM and IPM and adds them to the CSV. Displays WPM and IPM on screen. """
     def recordInputInfo(self):
-        # Just keep characters from textEdit
         text = self.textEdit.toPlainText()
 
-        # total text
         new_text = ''.join(list(filter(str.isalpha, text)))
 
         self.allInputNum.append(self.inputNum)
         self.validAlphaNum.append(len(new_text) - self.promptLength)
-        print(self.validAlphaNum)
 
         # Number of seconds that program has been running.
         timeIs = len(self.allInputNum)
@@ -167,7 +164,7 @@ class Ui_MainWindow(object):
         return wpm, ipm
 
     """ Not relevant for typing test. """
-    def updateInfo(self, environment, agent):
+    def updateInfo(self, agent):
         old_state = self.environment.current_location
         old_action = self.action
         self.environment.current_location = self.getCurrentLocation()
