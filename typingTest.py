@@ -9,6 +9,18 @@ import agent
 import sys
 import pygame as pg
 import numpy as np
+
+# import Multi-Arm Bandit Algorithms
+from algorithms.epsilon_greedy import EpsilonGreedy
+from algorithms.epsilon_greedy_annealing import EpsilonGreedyAnnealing
+from algorithms.hedge import Hedge
+from algorithms.softmax import Softmax
+from algorithms.softmax_annealing import SoftmaxAnnealing
+from algorithms.ucb1 import UCB1
+from algorithms.ucb2 import UCB2
+from algorithms.exp3 import EXP3
+from algorithms.thompson_sampling import ThompsonSampling
+
 # %matplotlib inline
 
 
@@ -75,9 +87,9 @@ class Ui_MainWindow(object):
 		self.retranslateUi(MainWindow)
 		self.pushButton.clicked.connect(self.startTest)
 		self.pushButton_2.clicked.connect(self.resetTest)
-		self.pushButton_3.clicked.connect(self.getNegativeReward)
-		self.pushButton_4.clicked.connect(self.getNormalReward)
-		self.pushButton_5.clicked.connect(self.getPositiveReward)
+		self.pushButton_3.clicked.connect(self.negativeRewardButtonCallback)
+		self.pushButton_4.clicked.connect(self.normalRewardButtonCallback)
+		self.pushButton_5.clicked.connect(self.positiveRewardButtonCallback)
 
 		self.textEdit.textChanged.connect(self.textEdit_callback)
 		self.textEdit.setDisabled(True)
@@ -85,7 +97,8 @@ class Ui_MainWindow(object):
 
 		#Added code here
 		self.recordWork = RecordWorkThread() #Work Thread
-		self.qlearningWork = QLearningWorkThread() 
+		# self.qlearningWork = QLearningWorkThread()
+		self.mabWork = MultiArmBanditWorkThread() # Multi-Arm Bandit Thread 
 		self.startTime=None
 		self.inputNum=0 #All keyboard inputNum
 		self.inputNumLast = 0
@@ -99,22 +112,32 @@ class Ui_MainWindow(object):
 		self.human_reward_record = []
 		self.humanRewardFeedback=0
 
+		# Multi-Arm Bandit Algorithm
+		self.algorithm = None
+
 	def startTest(self):
 		self.allInputNum=[]
 		self.validAlphaNum=[]
 		self.textEdit.setPlaceholderText("")
 		self.textEdit.setDisabled(False)
 		self.recordWork.start()
-		self.qlearningWork.start()
+		# self.qlearningWork.start()
+		self.mabWork.start()
 		self.environment = environment.GridWorld()
 		self.agentQ = agent.Q_Agent(self.environment)
-		self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
+		# self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
 		pg.mixer.init()
 		self.recordWork.recordTrigger.connect(self.recordInputInfo)
-		self.qlearningWork.qlearningTrigger.connect(self.update_call)
+		# self.qlearningWork.qlearningTrigger.connect(self.update_call)
+		self.mabWork.mabTrigger.connect(self.updateMAB)
 
 		# Start timer
 		self.startTime=time.time()
+
+		# Set Multi-Arm Bandit Algorithm
+		epsilon = 0.1
+		n_arms = 4
+		self.algorithm=EpsilonGreedy(epsilon, n_arms)
 
 	def resetTest(self):
 		self.allInputNum=[]
@@ -126,6 +149,7 @@ class Ui_MainWindow(object):
 		self.label_2.setText("IPM:-")
 		np.savetxt("reward.csv", np.array(self.reward_record), delimiter=",")
 		np.savetxt("human_rward.csv", np.array(self.human_reward_record), delimiter=",")
+		self.algorithm.reset()
 
 	def recordInputInfo(self):
 		#Calculate time interval
@@ -152,28 +176,41 @@ class Ui_MainWindow(object):
 		self.ipm=ipm
 
 
-	def updateInfo(self, environment, agent):
-		# get old state
-		old_state = self.environment.current_location
+	# def updateInfo(self, environment, agent):
+	# 	# get old state
+	# 	old_state = self.environment.current_location
 
+	# 	old_action = self.action
+
+	# 	self.environment.current_location = self.getCurrentLocation()
+
+	# 	self.action = agent.choose_action(self.environment.actions)
+
+	# 	reward = self.environment.make_step(self.action)
+
+	# 	print(self.pushButton_3.isEnabled())
+	# 	if self.pushButton_3.isEnabled():
+	# 		self.humanRewardFeedback=0.2
+
+	# 	self.activateButton()
+
+	# 	self.reward_record.append(reward)
+	# 	print(self.humanRewardFeedback)
+	# 	self.human_reward_record.append(self.humanRewardFeedback)
+	# 	agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
+	
+	def updateMAB(self):
 		old_action = self.action
 
-		self.environment.current_location = self.getCurrentLocation()
+		# need add sound or text output
+		self.action = self.algorithm.select_arm() # We may have 10 kinds of feedback, these are our arms
+		
+		print(self.humanRewardFeedback)
+		reward = self.humanRewardFeedback
 
-		self.action = agent.choose_action(self.environment.actions)
-
-		reward = self.environment.make_step(self.action)
-
-		print(self.pushButton_3.isEnabled())
-		if self.pushButton_3.isEnabled():
-			self.humanRewardFeedback=0.2
-
+		self.algorithm.update(self.action,reward)
 		self.activateButton()
 
-		self.reward_record.append(reward)
-		print(self.humanRewardFeedback)
-		self.human_reward_record.append(self.humanRewardFeedback)
-		agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 
 	def activateButton(self):
 		self.pushButton_3.setEnabled(True)
@@ -191,20 +228,20 @@ class Ui_MainWindow(object):
 		self.pushButton_4.setStyleSheet("border:none; background-color: gray")
 		self.pushButton_5.setStyleSheet("border:none; background-color: gray")		
 
-	def getCurrentLocation(self):
-		new_state=None
-		if self.wpm<=2:
-			new_state=(0,0)
-		elif self.wpm>2 and self.wpm<=4:
-			new_state=(0,1)
-		elif self.wpm>4 and self.wpm<=6:
-			new_state=(0,2)
-		elif self.wpm>6 and self.wpm<=8:
-			new_state=(0,3)		
-		else:
-			new_state=(0,4)	
+	# def getCurrentLocation(self):
+	# 	new_state=None
+	# 	if self.wpm<=2:
+	# 		new_state=(0,0)
+	# 	elif self.wpm>2 and self.wpm<=4:
+	# 		new_state=(0,1)
+	# 	elif self.wpm>4 and self.wpm<=6:
+	# 		new_state=(0,2)
+	# 	elif self.wpm>6 and self.wpm<=8:
+	# 		new_state=(0,3)		
+	# 	else:
+	# 		new_state=(0,4)	
 		
-		return new_state
+	# 	return new_state
 
 	def getWPMandIPM(self,time,interval):
 		"""Given time t, and time interval, we calculate the wpm and ipm
@@ -221,15 +258,15 @@ class Ui_MainWindow(object):
 	def textEdit_callback(self):
 		self.inputNum+=1
 
-	def getNegativeReward(self):
+	def negativeRewardButtonCallback(self):
 		self.humanRewardFeedback=-0.5
 		self.disableButton()
 
-	def getNormalReward(self):
+	def normalRewardButtonCallback(self):
 		self.humanRewardFeedback=0.2
 		self.disableButton()
 
-	def getPositiveReward(self):
+	def positiveRewardButtonCallback(self):
 		self.humanRewardFeedback=0.5
 		self.disableButton()
 
@@ -270,6 +307,18 @@ class QLearningWorkThread(QThread):
 		while 1:
 			time.sleep(5)
 			self.qlearningTrigger.emit(str(1))
+
+#For updating Multi-Arm Bandit per once per 30 seconds
+class MultiArmBanditWorkThread(QThread):
+	mabTrigger = pyqtSignal(str)
+
+	def __int__(self):
+		super(MultiArmBanditWorkThread, self).__init__()
+
+	def run(self):
+		while 1:
+			time.sleep(5)
+			self.mabTrigger.emit(str(1))
 
 if __name__ == "__main__":
 	app = QtWidgets.QApplication(sys.argv)
