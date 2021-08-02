@@ -26,12 +26,7 @@ class Q_Agent():
         self.mab = algorithms.thompson_sampling.ThompsonSampling(n_arms)
         self.mab = algorithms.ucb1.UCB1(n_arms)
         self.mab = algorithms.ucb2.UCB2(alpha_param, n_arms)
-        # self.mab = EpsilonGreedy.EpsilonGreedy(epsilon, len(self.environment.actions))
-        # self.mab = UCB1.UCB1(n_arms)
-        # self.mab = ThompsonSampling.ThompsonSampling(n_arms)
-        # self.mab = UCB2.UCB2(n_arms)
 
-        # self.makeArmsDependent(3, 4, 5)
 
     # Returns an index of the availableActions array.
     def choose_action(self):
