@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
 		self.qlearningWork.qlearningTrigger.connect(self.update_call)
 		self.hasStarted = True
 
-		# Start timer
+		"""Start timer."""
 		self.startTime=time.time()
 
 	def resetTest(self):
@@ -188,16 +188,17 @@ class Ui_MainWindow(object):
 		# Adds timeIS, wpm, and ipm to self.log to record to CSV.
 		self.log.append((timeIs, wpm, ipm))
 
-	def playAudio(self, agent):
-		"""Chooses action using Epsilon Greedy Algorithm. """
-		self.actionIndex = agent.choose_action()
 
-		""" Make_step includes playing mp3. """
+	def playAudio(self, agent):
+		"""Chooses action using Algorithm. """
+		self.actionIndex = agent.choose_action()
+		"""Make_step includes playing mp3."""
 		self.environment.make_step(self.actionIndex)
 		self.activateButton()
 
 	def updateInfo(self, agent, reward):
 		agent.update(self.actionIndex, reward)
+		self.humanRewardFeedback = 0
 
 	def getNegativeReward(self):
 		self.humanRewardFeedback -= 0.5
@@ -244,8 +245,7 @@ class Ui_MainWindow(object):
 		return new_state
 
 	def getWPMandIPM(self,time,interval):
-		"""Given time t, and time interval, we calculate the wpm and ipm
-		"""
+		"""Given time t, and time interval, we calculate the wpm and ipm"""
 		if time <= interval:
 			wpm = round(self.validAlphaNum[time-1]/(time/60))
 			ipm = round(self.allInputNum[time-1]/(time/60))
@@ -278,7 +278,7 @@ class QLearningWorkThread(QThread):
 
 	def run(self):
 		while 1:
-			time.sleep(15)
+			time.sleep(8)
 			self.qlearningTrigger.emit(str(1))
 
 
@@ -287,6 +287,7 @@ if __name__ == "__main__":
 	MainWindow = QtWidgets.QMainWindow()
 	ui = Ui_MainWindow()
 	ui.setupUi(MainWindow)
+
 	MainWindow.show()
 	status = app.exec_()
 	pd.DataFrame(data=ui.log, columns=['time', 'wpm', 'ipm'] ).to_csv('test.csv', index=False)

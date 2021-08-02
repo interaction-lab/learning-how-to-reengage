@@ -40,9 +40,9 @@ class GridWorld:
         self.grid[0,3] = 0
 
         # Set available actions
-        self.actions = ['Click', 'Encourage', 'Criticize']
-        
-    ## Put methods here:
+        self.actions = ['mod1', 'mod2', 'mod3', 'mod4', 'mod5', 'mod6', 'mod7', 'mod8', 'mod9']
+        # self.actions = ['Click', 'Encourage', 'Criticize']
+
     def get_available_actions(self):
         """Returns possible actions"""
         return self.actions
@@ -60,17 +60,41 @@ class GridWorld:
     def make_step(self, actionIndex):
         """Moves the agent in the specified direction. If agent is at a border, agent stays still
         but takes negative reward. Function returns the reward for the move."""
+        print(actionIndex)
 
         if actionIndex == 0:
-            pg.mixer.music.load('click.mp3')
-            pg.mixer.music.play()
+            pg.mixer.music.load('0.mp3')
         elif actionIndex == 1:
-            pg.mixer.music.load('encourage.mp3')
-            pg.mixer.music.play()
+            pg.mixer.music.load('1.mp3')
         elif actionIndex == 2:
-            pg.mixer.music.load('critisize.mp3')
-            pg.mixer.music.play()
-    
+            pg.mixer.music.load('2.mp3')
+        elif actionIndex == 3:
+            pg.mixer.music.load('3.mp3')
+        elif actionIndex == 4:
+            pg.mixer.music.load('4.mp3')
+        elif actionIndex == 5:
+            pg.mixer.music.load('5.mp3')
+        elif actionIndex == 6:
+            pg.mixer.music.load('6.mp3')
+        elif actionIndex == 7:
+            pg.mixer.music.load('7.mp3')
+        elif actionIndex == 8:
+            pg.mixer.music.load('8.mp3')
+        elif actionIndex == 9:
+            pg.mixer.music.load('9.mp3')
+        pg.mixer.music.play()
+        #
+
+        # if actionIndex == 0:
+        #     pg.mixer.music.load('click.mp3')
+        #     pg.mixer.music.play()
+        # elif actionIndex == 1:
+        #     pg.mixer.music.load('encourage.mp3')
+        #     pg.mixer.music.play()
+        # elif actionIndex == 2:
+        #     pg.mixer.music.load('critisize.mp3')
+        #     pg.mixer.music.play()
+
     def check_state(self):
         """Check if the agent is in a terminal state (gold or bomb), if so return 'TERMINAL'"""
         if self.current_location in self.terminal_states:
