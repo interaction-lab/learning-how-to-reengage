@@ -4,7 +4,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import time
 import functools
-import environment
 import agent
 import sys
 import pygame as pg
@@ -97,7 +96,6 @@ class Ui_MainWindow(object):
 
 		#Added code here
 		self.recordWork = RecordWorkThread() #Work Thread
-		# self.qlearningWork = QLearningWorkThread()
 		self.mabWork = MultiArmBanditWorkThread() # Multi-Arm Bandit Thread 
 		self.startTime=None
 		self.inputNum=0 #All keyboard inputNum
@@ -106,14 +104,12 @@ class Ui_MainWindow(object):
 		self.ipm=None #Input per minute
 		self.allInputNum=[]
 		self.validInputNum=[]
-		self.action='None'
+		self.action=1
 
 		self.reward_record = []
 		self.human_reward_record = []
 		self.humanRewardFeedback=0
 
-		# Multi-Arm Bandit Algorithm
-		self.algorithm = None
 
 	def startTest(self):
 		self.allInputNum=[]
@@ -121,14 +117,9 @@ class Ui_MainWindow(object):
 		self.textEdit.setPlaceholderText("")
 		self.textEdit.setDisabled(False)
 		self.recordWork.start()
-		# self.qlearningWork.start()
 		self.mabWork.start()
-		self.environment = environment.GridWorld()
-		self.agentQ = agent.Q_Agent(self.environment)
-		# self.update_call= functools.partial(self.updateInfo, environment=self.environment, agent = self.agentQ)
-		pg.mixer.init()
+
 		self.recordWork.recordTrigger.connect(self.recordInputInfo)
-		# self.qlearningWork.qlearningTrigger.connect(self.update_call)
 		self.mabWork.mabTrigger.connect(self.updateMAB)
 
 		# Start timer
@@ -137,7 +128,9 @@ class Ui_MainWindow(object):
 		# Set Multi-Arm Bandit Algorithm
 		epsilon = 0.1
 		n_arms = 4
-		self.algorithm=EpsilonGreedy(epsilon, n_arms)
+		algorithm=EpsilonGreedy(epsilon, n_arms) # Different MAB algorithm has different initialization function, go to algorithm folder to check init()
+		self.agentMAB = agent.MAB_Agent(algorithm)
+		pg.mixer.init()
 
 	def resetTest(self):
 		self.allInputNum=[]
@@ -149,7 +142,7 @@ class Ui_MainWindow(object):
 		self.label_2.setText("IPM:-")
 		np.savetxt("reward.csv", np.array(self.reward_record), delimiter=",")
 		np.savetxt("human_rward.csv", np.array(self.human_reward_record), delimiter=",")
-		self.algorithm.reset()
+		self.agentMAB.reset()
 
 	def recordInputInfo(self):
 		#Calculate time interval
@@ -174,43 +167,18 @@ class Ui_MainWindow(object):
 
 		self.wpm=wpm
 		self.ipm=ipm
-
-
-	# def updateInfo(self, environment, agent):
-	# 	# get old state
-	# 	old_state = self.environment.current_location
-
-	# 	old_action = self.action
-
-	# 	self.environment.current_location = self.getCurrentLocation()
-
-	# 	self.action = agent.choose_action(self.environment.actions)
-
-	# 	reward = self.environment.make_step(self.action)
-
-	# 	print(self.pushButton_3.isEnabled())
-	# 	if self.pushButton_3.isEnabled():
-	# 		self.humanRewardFeedback=0.2
-
-	# 	self.activateButton()
-
-	# 	self.reward_record.append(reward)
-	# 	print(self.humanRewardFeedback)
-	# 	self.human_reward_record.append(self.humanRewardFeedback)
-	# 	agent.learn(old_state, reward, self.humanRewardFeedback, self.environment.current_location, old_action)
 	
 	def updateMAB(self):
 		old_action = self.action
 
-		# need add sound or text output
-		self.action = self.algorithm.select_arm() # We may have 10 kinds of feedback, these are our arms
-		
+		self.action = self.agentMAB.select_arm()
 		print(self.humanRewardFeedback)
+		
+		# In next weeks, combine WPM, IPM reward and human subjective feedback
 		reward = self.humanRewardFeedback
+		self.agentMAB.update(old_action,reward)
 
-		self.algorithm.update(self.action,reward)
 		self.activateButton()
-
 
 	def activateButton(self):
 		self.pushButton_3.setEnabled(True)
@@ -227,21 +195,6 @@ class Ui_MainWindow(object):
 		self.pushButton_3.setStyleSheet("border:none; background-color: gray")
 		self.pushButton_4.setStyleSheet("border:none; background-color: gray")
 		self.pushButton_5.setStyleSheet("border:none; background-color: gray")		
-
-	# def getCurrentLocation(self):
-	# 	new_state=None
-	# 	if self.wpm<=2:
-	# 		new_state=(0,0)
-	# 	elif self.wpm>2 and self.wpm<=4:
-	# 		new_state=(0,1)
-	# 	elif self.wpm>4 and self.wpm<=6:
-	# 		new_state=(0,2)
-	# 	elif self.wpm>6 and self.wpm<=8:
-	# 		new_state=(0,3)		
-	# 	else:
-	# 		new_state=(0,4)	
-		
-	# 	return new_state
 
 	def getWPMandIPM(self,time,interval):
 		"""Given time t, and time interval, we calculate the wpm and ipm
@@ -295,18 +248,6 @@ class RecordWorkThread(QThread):
 		while 1:
 			time.sleep(1)
 			self.recordTrigger.emit(str(1))
-
-#For updating Qagent per once per 30 seconds
-class QLearningWorkThread(QThread):
-	qlearningTrigger = pyqtSignal(str)
-
-	def __int__(self):
-		super(QLearningWorkThread, self).__init__()
-
-	def run(self):
-		while 1:
-			time.sleep(5)
-			self.qlearningTrigger.emit(str(1))
 
 #For updating Multi-Arm Bandit per once per 30 seconds
 class MultiArmBanditWorkThread(QThread):
