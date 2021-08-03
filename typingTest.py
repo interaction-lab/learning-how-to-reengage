@@ -174,7 +174,7 @@ class Ui_MainWindow(object):
 		self.action = self.agentMAB.select_arm()
 		print(self.humanRewardFeedback)
 		
-		# In next weeks, combine WPM, IPM reward and human subjective feedback
+		# In the next weeks, combine WPM, IPM reward and human subjective feedback here
 		reward = self.humanRewardFeedback
 		self.agentMAB.update(old_action,reward)
 
