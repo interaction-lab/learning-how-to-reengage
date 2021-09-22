@@ -126,9 +126,9 @@ class Ui_MainWindow(object):
 		self.startTime=time.time()
 
 		# Set Multi-Arm Bandit Algorithm
-		epsilon = 0.1
+		epsilon = 0.2
 		n_arms = 4
-		algorithm=EpsilonGreedy(epsilon, n_arms) # Different MAB algorithm has different initialization function, go to algorithm folder to check init()
+		algorithm=ThompsonSampling(n_arms) # Different MAB algorithm has different initialization function, go to algorithm folder to check init()
 		self.agentMAB = agent.MAB_Agent(algorithm)
 		pg.mixer.init()
 
@@ -172,11 +172,15 @@ class Ui_MainWindow(object):
 		old_action = self.action
 
 		self.action = self.agentMAB.select_arm()
+		print("---")
+		print (self.action)
 		print(self.humanRewardFeedback)
-		
-		# In the next weeks, combine WPM, IPM reward and human subjective feedback here
+
+				# In the next weeks, combine WPM, IPM reward and human subjective feedback here
 		reward = self.humanRewardFeedback
 		self.agentMAB.update(old_action,reward)
+
+		self.humanRewardFeedback = 0.6
 
 		self.activateButton()
 
@@ -212,15 +216,15 @@ class Ui_MainWindow(object):
 		self.inputNum+=1
 
 	def negativeRewardButtonCallback(self):
-		self.humanRewardFeedback=-0.5
+		self.humanRewardFeedback=0
 		self.disableButton()
 
 	def normalRewardButtonCallback(self):
-		self.humanRewardFeedback=0.2
+		self.humanRewardFeedback=0.6
 		self.disableButton()
 
 	def positiveRewardButtonCallback(self):
-		self.humanRewardFeedback=0.5
+		self.humanRewardFeedback=1
 		self.disableButton()
 
 	def retranslateUi(self, MainWindow):

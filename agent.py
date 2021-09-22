@@ -33,23 +33,23 @@ class MAB_Agent():
         """According to selected arm, MAB_Agent give feedback(only audio right now)
         """
         if actionIndex == 0:
-            pg.mixer.music.load('audio\\0.mp3')
+            pg.mixer.music.load('audio/0.mp3')
         elif actionIndex == 1:
-            pg.mixer.music.load('audio\\1.mp3')
+            pg.mixer.music.load('audio/1.mp3')
         elif actionIndex == 2:
-            pg.mixer.music.load('audio\\2.mp3')
+            pg.mixer.music.load('audio/2.mp3')
         elif actionIndex == 3:
-            pg.mixer.music.load('audio\\3.mp3')
+            pg.mixer.music.load('audio/3.mp3')
         elif actionIndex == 4:
-            pg.mixer.music.load('audio\\4.mp3')
+            pg.mixer.music.load('audio/4.mp3')
         elif actionIndex == 5:
-            pg.mixer.music.load('audio\\5.mp3')
+            pg.mixer.music.load('audio/5.mp3')
         elif actionIndex == 6:
-            pg.mixer.music.load('audio\\6.mp3')
+            pg.mixer.music.load('audio/6.mp3')
         elif actionIndex == 7:
-            pg.mixer.music.load('audio\\7.mp3')
+            pg.mixer.music.load('audio/7.mp3')
         elif actionIndex == 8:
-            pg.mixer.music.load('audio\\8.mp3')
+            pg.mixer.music.load('audio/8.mp3')
         elif actionIndex == 9:
-            pg.mixer.music.load('audio\\9.mp3')
+            pg.mixer.music.load('audio/9.mp3')
         pg.mixer.music.play()

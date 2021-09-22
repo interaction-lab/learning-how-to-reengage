@@ -20,7 +20,7 @@ class ThompsonSampling():
 
     def select_arm(self):
         rho = [random.betavariate(self.alpha[i], self.beta[i]) for i in range(self.n_arms)]
-        return rho
+        return np.argmax(rho)
 
     def update(self, chosen_arm, reward):
         self.counts[chosen_arm] += 1
