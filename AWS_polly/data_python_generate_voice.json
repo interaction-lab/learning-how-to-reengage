@@ -1,0 +1,97 @@
+{
+"Trainer": {
+  "1": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"x-fast\" pitch=\"high\">Come <emphasis level=\"strong\"><prosody amazon:max-duration=\"0.25s\">On, </prosody></emphasis> </prosody> <emphasis><prosody rate=\"fast\" pitch=\"high\"> let’s pick it up! Your typing speed has been 25wpm in the past minute, down from your 45 wpm average! </prosody></emphasis></speak>",
+    "Engine": "standard"
+    },
+  "2": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"105%\" pitch=\"high\">Are you <emphasis>going </emphasis>to keep typing? You have been  <emphasis>inactive for two minutes. </emphasis> </prosody></speak>",
+    "Engine": "standard"
+    },
+  "3": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"fast\" pitch=\"high\"><emphasis>Great job</emphasis> so <emphasis>far!</emphasis></prosody><prosody rate=\"110%\">However, I </prosody> <prosody rate=\"120%\"><emphasis>know you can</emphasis> </prosody> <prosody rate=\"110%\"> do better. Your typing has slowed to 25 wpm. </prosody></speak>",
+    "Engine": "standard"
+    },
+  "4": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"105%\" pitch=\"high\">Your typing speed<emphasis> has slowed </emphasis> to an average of 25 wpm. <break time=\"0.3s\"/>You would feel better if you <emphasis>finished your typing sooner</emphasis> </prosody><prosody rate=\"95%\" pitch=\"high\">  rather than later. </prosody></speak>",
+    "Engine": "standard"
+    }
+},
+"Implicit Verbal": {
+  "1": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"110%\" pitch=\"high\">No problem</prosody>, <prosody pitch=\"high\">I’ll wait </prosody> for you.</speak>",
+    "Engine": "standard"
+    },
+  "2": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak>I <prosody pitch=\"low\">appreciate </prosody> the effort you’re <prosody pitch=\"low\">putting</prosody> into your<prosody pitch=\"low\"> work. </prosody></speak>",
+    "Engine": "standard"
+    },
+  "3": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak>This is hard,<break time=\"0.3s\"/> but you’re doing <prosody pitch=\"high\">great!</prosody></speak>",
+    "Engine": "standard"
+    },
+  "4": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"115%\">OK</prosody>, <prosody pitch=\"high\"> we can pause </prosody> for a moment. </speak>",
+    "Engine": "standard"
+    },
+  "5": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody pitch=\"high\">You’ve been doing well.</prosody><prosody rate=\"90%\" pitch=\"high\">Keep going! </prosody></speak>",
+    "Engine": "standard"
+    },
+  "6": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak>Even though I am a <prosody pitch=\"high\">robot</prosody>, I <prosody pitch=\"high\">also</prosody> get distracted. </speak>",
+    "Engine": "standard"
+    },
+  "7": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak> <prosody pitch=\"high\">Great work , don't <emphasis>give up.</emphasis></prosody></speak>",
+    "Engine": "standard"
+    },
+  "8": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody rate=\"x-fast\" pitch=\"high\">Come <emphasis level=\"strong\"><prosody amazon:max-duration=\"0.25s\">On, </prosody></emphasis> </prosody> , you can <prosody pitch=\"high\">do it!</prosody></speak>",
+    "Engine": "standard"
+    },
+  "9": {
+    "VoiceId": "Matthew",
+    "OutputFormat": "mp3",
+    "TextType": "ssml",
+    "Text": "<speak><prosody pitch=\"high\" rate=\"95%\">It’s good to </prosody> <prosody pitch=\"high\">give ourselves a quick break.</prosody></speak>",
+    "Engine": "standard"
+    }
+  }
+}
