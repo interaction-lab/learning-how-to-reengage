@@ -8,6 +8,7 @@ import agent
 import sys
 import pygame as pg
 import numpy as np
+import operator
 
 # import Multi-Arm Bandit Algorithms
 from algorithms.epsilon_greedy import EpsilonGreedy
@@ -19,6 +20,9 @@ from algorithms.ucb1 import UCB1
 from algorithms.ucb2 import UCB2
 from algorithms.exp3 import EXP3
 from algorithms.thompson_sampling import ThompsonSampling
+
+from algorithms.c_ucb import C_UCB
+from algorithms.c_thompson_sampling import C_ThompsonSampling
 
 # %matplotlib inline
 
@@ -126,9 +130,9 @@ class Ui_MainWindow(object):
 		self.startTime=time.time()
 
 		# Set Multi-Arm Bandit Algorithm
-		epsilon = 0.2
+		epsilon = 0.1
 		n_arms = 4
-		algorithm=ThompsonSampling(n_arms) # Different MAB algorithm has different initialization function, go to algorithm folder to check init()
+		algorithm=C_ThompsonSampling(n_arms) # Different MAB algorithm has different initialization function, go to algorithm folder to check init()
 		self.agentMAB = agent.MAB_Agent(algorithm)
 		pg.mixer.init()
 
@@ -172,15 +176,11 @@ class Ui_MainWindow(object):
 		old_action = self.action
 
 		self.action = self.agentMAB.select_arm()
-		print("---")
-		print (self.action)
 		print(self.humanRewardFeedback)
-
-				# In the next weeks, combine WPM, IPM reward and human subjective feedback here
+		
+		# In the next weeks, combine WPM, IPM reward and human subjective feedback here
 		reward = self.humanRewardFeedback
 		self.agentMAB.update(old_action,reward)
-
-		self.humanRewardFeedback = 0.6
 
 		self.activateButton()
 
@@ -216,15 +216,15 @@ class Ui_MainWindow(object):
 		self.inputNum+=1
 
 	def negativeRewardButtonCallback(self):
-		self.humanRewardFeedback=0
+		self.humanRewardFeedback=-0.5
 		self.disableButton()
 
 	def normalRewardButtonCallback(self):
-		self.humanRewardFeedback=0.6
+		self.humanRewardFeedback=0.2
 		self.disableButton()
 
 	def positiveRewardButtonCallback(self):
-		self.humanRewardFeedback=1
+		self.humanRewardFeedback=0.5
 		self.disableButton()
 
 	def retranslateUi(self, MainWindow):
