@@ -9,6 +9,7 @@ class RandomAgent():
         """Returns a random choice of the available actions"""
         return np.random.choice(available_actions)   
 
+#The class definition of a MAB agent
 class MAB_Agent():
     # Intialize
     def __init__(self, algorithm):
