@@ -10,6 +10,11 @@ import pygame as pg
 import numpy as np
 import operator
 
+
+#TODO
+# 1. Refactor the code
+# 2. Test the algorithms to make it converge as expected.
+
 # import Multi-Arm Bandit Algorithms
 from algorithms.epsilon_greedy import EpsilonGreedy
 from algorithms.epsilon_greedy_annealing import EpsilonGreedyAnnealing
