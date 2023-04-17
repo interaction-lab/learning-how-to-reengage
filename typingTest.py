@@ -250,13 +250,20 @@ class Ui_MainWindow(object):
 class RecordWorkThread(QThread):
 	recordTrigger = pyqtSignal(str)
 
-	def __int__(self):
+	def __init__(self):
 		super(RecordWorkThread, self).__init__()
 
 	def run(self):
 		while 1:
 			time.sleep(1)
 			self.recordTrigger.emit(str(1))
+			# here
+			if QApplication.activeWindow() is not None:
+				print("Application is in focus")
+			else:
+				print("Application is not in focus")
+			#here
+			
 
 #For updating Multi-Arm Bandit per once per 30 seconds
 class MultiArmBanditWorkThread(QThread):
