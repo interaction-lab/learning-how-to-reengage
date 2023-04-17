@@ -257,12 +257,11 @@ class RecordWorkThread(QThread):
 		while 1:
 			time.sleep(1)
 			self.recordTrigger.emit(str(1))
-			# here
+			# Statement tracks if typing test is active window
 			if QApplication.activeWindow() is not None:
 				print("Application is in focus")
 			else:
 				print("Application is not in focus")
-			#here
 			
 
 #For updating Multi-Arm Bandit per once per 30 seconds
